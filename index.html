@@ -4,8 +4,11 @@
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
     <title>Projeto Adm Hospitalar</title>
-    <link rel="stylesheet" href="css/style.css" />
-    <link rel="stylesheet" href="css/pages/login.css" />
+    <link rel="stylesheet" href="css/style.css">
+    <link rel="stylesheet" href="css/pages/login.css">
+    <link rel="stylesheet" href="css/pages/pacientes.css">
+    <link rel="stylesheet" href="css/pages/config.css">
+    <link rel="stylesheet" href="css/pages/ajuda.css" />
 </head>
 <body>
 
@@ -13,27 +16,7 @@
         <!-- O conteúdo da página será carregado aqui -->
     </div>
 
-    <script>
-        // Carrega automaticamente a página de login ao abrir
-        fetch('pages/login.html')
-        .then(res => res.text())
-        .then(html => {
-            document.getElementById('app').innerHTML = html;
-        })
-        .catch(err => console.error('Erro ao carregar a página:', err));
-
-          function carregarPagina(pagina) {
-            fetch(`pages/${pagina}`)
-            .then(res => res.text())
-            .then(html => {
-                document.getElementById('app').innerHTML = html;
-            })
-            .catch(err => console.error('Erro ao carregar página:', err));
-        }
-
-        // Carregar a tela de login por padrão
-        carregarPagina('login.html');
-    </script>
+    <script src = "js/app.js"></script>
 
 </body>
 </html>
