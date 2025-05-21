@@ -1,0 +1,55 @@
+.ajuda-container {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  padding: 20px;
+  font-family: sans-serif;
+  gap: 30px;
+}
+
+.ajuda-container h2 {
+  color: #000000;
+  font-size: 24px;
+}
+
+.grupo-ajuda,
+.grupo-acessibilidade {
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+  width: 100%;
+  max-width: 300px;
+}
+
+.ajuda-btn {
+  padding: 10px;
+  background-color: #00B8A9;
+  color: white;
+  border: none;
+  border-radius: 8px;
+  font-size: 16px;
+  cursor: pointer;
+  transition: background-color 0.3s;
+}
+
+.ajuda-btn:hover {
+  background-color: #027A74;
+}
+
+.navbar {
+  position: fixed;
+  bottom: 0;
+  width: 100%;
+  display: flex;
+  justify-content: space-around;
+  padding: 10px 0;
+  background-color: #A2A59B;
+}
+
+.navbar button {
+  background: none;
+  border: none;
+  color: white;
+  font-size: 16px;
+  cursor: pointer;
+}

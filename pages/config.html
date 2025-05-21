@@ -1,0 +1,29 @@
+<div class="config-container">
+  <div class="profile-section">
+    <div class="profile-pic">
+      <img src="assetsmeuPersona.jpeg" alt="Foto de Perfil" />
+    </div>
+    <h2>Nome do Usuário</h2>
+  </div>
+
+  <div class="config-options">
+    <button class="config-btn">Alterar senha</button>
+    <button class="config-btn">Notificações</button>
+    <button class="config-btn">Tema</button>
+    <button class="config-btn">Privacidade</button>
+  </div>
+
+  <div class="logout-section">
+    <button onclick="localStorage.removeItem('paginaAtual'); carregarPagina('login.html')" class="logout-btn">
+      Sair
+    </button>
+  </div>
+
+  <!-- Navbar inferior -->
+  <div class="navbar">
+    <button onclick="carregarPagina('pacientes.html')">🏠</button>
+    <button onclick="carregarPagina('ajuda.html')">👥</button>
+    <button>⚙️</button>
+  </div>
+
+</div>
