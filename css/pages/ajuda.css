@@ -36,20 +36,3 @@
   background-color: #027A74;
 }
 
-.navbar {
-  position: fixed;
-  bottom: 0;
-  width: 100%;
-  display: flex;
-  justify-content: space-around;
-  padding: 10px 0;
-  background-color: #A2A59B;
-}
-
-.navbar button {
-  background: none;
-  border: none;
-  color: white;
-  font-size: 16px;
-  cursor: pointer;
-}

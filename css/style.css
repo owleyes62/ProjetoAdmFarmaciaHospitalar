@@ -15,9 +15,34 @@
 body, html {
   width: 100%;
   height: 100%;
-  background-color: var(--verde-escuro);
+  background-color: var(--branco);
 }
 
+/* inpaciente (pages: medicamento, entrega, prontuario) */
+
+.info-paciente {
+  background-color: #027A74;
+  color: white;
+  padding: 15px;
+  border-radius: 8px;
+  margin: 10px;
+}
+
+.prioridade {
+  padding: 2px 8px;
+  border-radius: 5px;
+  color: white;
+}
+
+.prioridade.verde {
+  background-color: #00B894;
+}
+
+.prioridade.amarela {
+  background-color: #FDCB6E;
+  color: black;
+}
+/* Botões superios | geral */
 
 .botoes-superiores {
   display: flex;
@@ -42,4 +67,43 @@ body, html {
 
 .botoes-superiores .ativo {
   background-color: #027A74;
+}
+
+
+/* navbar | geral */
+
+.navbar {
+  position: fixed;
+  bottom: 0;
+  left: 0;
+  width: 100%;
+  background-color: #027A74;
+  display: flex;
+  justify-content: space-around;
+  padding: 10px 0;
+  z-index: 1000;
+}
+
+.navbar button {
+  background: none;
+  border: none;
+  color: white;
+  font-size: 16px;
+  cursor: pointer;
+}
+
+.navbar button:hover {
+  text-decoration: underline;
+}
+
+/* Animação de transição de páginas */
+
+.fade-out {
+  opacity: 0;
+  transition: opacity 0.3s ease;
+}
+
+.fade-in {
+  opacity: 1;
+  transition: opacity 0.3s ease;
 }

@@ -1,36 +1,9 @@
 .medicamento-container {
-  padding: 20px;
   font-family: sans-serif;
   padding-bottom: 80px;
 }
 
-.paciente-info {
-  background-color: #f2f2f2;
-  padding: 15px;
-  border-radius: 8px;
-  margin-bottom: 20px;
-  color: #333;
-}
 
-.paciente-info p {
-  margin: 5px 0;
-}
-
-.prioridade {
-  padding: 2px 8px;
-  border-radius: 5px;
-  color: white;
-  font-weight: bold;
-}
-
-.prioridade.verde {
-  background-color: #00B894;
-}
-
-.prioridade.amarela {
-  background-color: #FDCB6E;
-  color: black;
-}
 
 
 .lista-medicamentos {
@@ -51,22 +24,4 @@
   box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
 }
 
-.navbar {
-  position: fixed;
-  bottom: 0;
-  left: 0;
-  right: 0;
-  display: flex;
-  justify-content: space-evenly;
-  padding: 10px 0;
-  background-color: #A2A59B;
-  z-index: 100;
-}
 
-.navbar button {
-  background: none;
-  border: none;
-  color: white;
-  font-size: 16px;
-  cursor: pointer;
-}

@@ -1,28 +1,4 @@
 /* styles/prontuario.css */
-
-.info-paciente {
-  background-color: #027A74;
-  color: white;
-  padding: 15px;
-  border-radius: 8px;
-  margin: 10px;
-}
-
-.prioridade {
-  padding: 2px 8px;
-  border-radius: 4px;
-  font-weight: bold;
-}
-
-.prioridade.verde {
-  background-color: #00B8A9;
-}
-
-.prioridade.amarela {
-  background-color: #FFC107;
-  color: black;
-}
-
 .top-buttons {
   display: flex;
   justify-content: space-around;
@@ -61,21 +37,3 @@
   border-radius: 6px;
 }
 
-.navbar {
-  position: fixed;
-  bottom: 0;
-  left: 0;
-  right: 0;
-  background-color: #027A74;
-  display: flex;
-  justify-content: space-around;
-  padding: 10px;
-}
-
-.navbar button {
-  background: none;
-  border: none;
-  color: white;
-  font-weight: bold;
-  cursor: pointer;
-}

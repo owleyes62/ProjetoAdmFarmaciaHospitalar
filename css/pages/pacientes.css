@@ -45,18 +45,4 @@
   font-weight: bold;
 }
 
-/* Navbar inferior */
-.navbar {
-  display: flex;
-  justify-content: space-around;
-  padding: 0.8rem 0;
-  background-color: var(--verde-escuro);
-}
 
-.navbar button {
-  background: none;
-  border: none;
-  color: var(--branco);
-  font-size: 1.5rem;
-  cursor: pointer;
-}
