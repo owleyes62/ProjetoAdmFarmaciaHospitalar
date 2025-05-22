@@ -5,7 +5,7 @@
   padding: 20px;
   gap: 20px;
   font-family: sans-serif;
-  min-height: 115vh; /* Aumenta a altura mínima da página para forçar o scroll */
+  min-height: 110vh; /* Aumenta a altura mínima da página para forçar o scroll */
 }
 
 .email{
