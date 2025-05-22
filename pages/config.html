@@ -3,17 +3,30 @@
     <div class="profile-pic">
       <img src="assets/meu-persona.png" alt="Foto de Perfil" />
     </div>
-    <h2>Nome do Usuário</h2>
+    <h2 class="nome">Nome do Usuário</h2>
+    <h2 class="email">email do usario</h2>
   </div>
 
-  <div class="config-options">
-    <button class="config-btn">Conta</button>
-    <button class="config-btn">Notificações</button>
-    <button class="config-btn">Modo escuro</button>
-    <button class="config-btn">Idioma</button>
-    <button class="config-btn">Tema</button>
-    <button class="config-btn">Polita de Privacidade</button>
-    <button class="config-btn">Relatorio</button>
+  <!-- Grupo 1: Conta + Notificações -->
+  <div class="config-card">
+    <button class="config-btn"> Conta <i class="fa fa-angle-right" style="margin-left: 75%;"></i></button>
+    <hr />
+    <button class="config-btn">Notificações <i class="fa fa-angle-right" style="margin-left: 58.70%;"></i></button>
+  </div>
+
+  <!-- Grupo 2: Outras opções -->
+  <div class="config-card">
+    <button class="config-btn">Modo escuro <i class="fa fa-angle-right" style="margin-left: 56.70%;"></i></button>
+    <hr />
+    <button class="config-btn">Idioma <i class="fa fa-angle-right" style="margin-left: 73%;"></i></button>
+    <hr />
+    <button class="config-btn">Tema <i class="fa fa-angle-right" style="margin-left: 76.20%;"></i></button>
+    <hr />
+    <button class="config-btn" onclick="carregarPagina('ajuda.html')">Ajuda <i class="fa fa-angle-right" style="margin-left: 75.50%;"></i></button>
+    <hr />
+    <button class="config-btn">Política de Privacidade <i class="fa fa-angle-right" style="margin-left: 31%;"></i></button>
+    <hr />
+    <button class="config-btn">Relatório <i class="fa fa-angle-right" style="margin-left: 67%;"></i></button>
   </div>
 
   <div class="logout-section">

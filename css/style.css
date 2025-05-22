@@ -16,6 +16,7 @@ body, html {
   width: 100%;
   height: 100%;
   background-color: var(--branco);
+  overflow-y: auto;
 }
 
 /* inpaciente (pages: medicamento, entrega, prontuario) */
@@ -107,3 +108,7 @@ body, html {
   opacity: 1;
   transition: opacity 0.3s ease;
 }
+
+/* icons modifacao */
+
+
