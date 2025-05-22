@@ -1,16 +1,33 @@
 function carregarPagina(pagina) {
-  fetch(`pages/${pagina}`)
-    .then(res => res.text())
-    .then(html => {
-      document.getElementById('app').innerHTML = html;
+  const app = document.getElementById('app');
 
-      // Após o HTML ser carregado, configurar eventos da página específica
-      if (pagina === 'login.html') configurarLogin();
-      if (pagina === 'paciente.html') configurarPaciente();
-      if (pagina === 'config.html') configurarConfig();
-      // Adicione mais se precisar
-    })
-    .catch(err => console.error('Erro ao carregar página:', err));
+  // Aplica fade-out antes de trocar o conteúdo
+  app.classList.add('fade-out');
+
+  // Espera a transição terminar antes de trocar o conteúdo
+  setTimeout(() => {
+    fetch(`pages/${pagina}`)
+      .then(res => res.text())
+      .then(html => {
+        app.innerHTML = html;
+        localStorage.setItem('paginaAtual', pagina);
+
+        // Aplica fade-in depois de trocar o conteúdo
+        app.classList.remove('fade-out');
+        app.classList.add('fade-in');
+
+        // ⚠️ Chamar função de configuração da página carregada
+        if (pagina === 'login.html') configurarLogin();
+        if (pagina === 'pacientes.html') configurarPaciente();
+        if (pagina === 'config.html') configurarConfig(); // Se necessário
+
+        // Remove a classe fade-in depois de um tempo (para a próxima troca funcionar)
+        setTimeout(() => {
+          app.classList.remove('fade-in');
+        }, 300);
+      })
+      .catch(err => console.error('Erro ao carregar página:', err));
+  }, 300);
 }
 
 // Sempre iniciar na tela de login
@@ -28,7 +45,6 @@ function configurarLogin() {
   }
 }
 
-
 function configurarPaciente() {
   const btnConfig = document.getElementById('btn-config');
   if (btnConfig) {
@@ -38,3 +54,6 @@ function configurarPaciente() {
   }
 }
 
+function configurarConfig() {
+  // Código para configurar eventos da tela config (opcional)
+}
