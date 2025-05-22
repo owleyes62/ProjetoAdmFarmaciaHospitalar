@@ -1,0 +1,91 @@
+.paciente-info {
+  background-color: #027A74;
+  color: white;
+  padding: 15px;
+  font-size: 14px;
+}
+
+.prioridade.verde {
+  background-color: green;
+  padding: 2px 8px;
+  border-radius: 10px;
+  color: white;
+}
+
+.top-buttons {
+  display: flex;
+  justify-content: space-around;
+  background-color: #00B8A9;
+  padding: 10px;
+}
+
+.top-buttons button {
+  background-color: white;
+  border: none;
+  padding: 10px;
+  border-radius: 8px;
+  cursor: pointer;
+}
+
+.top-buttons .ativo {
+  background-color: #A2A59B;
+  color: white;
+}
+
+.grafico-container {
+  display: flex;
+  justify-content: center;
+  margin: 20px 0;
+}
+
+.grafico {
+  width: 150px;
+  height: 150px;
+  border-radius: 50%;
+  background-color: #00B8A9;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  color: white;
+  font-size: 14px;
+}
+
+.med-lista {
+  display: flex;
+  flex-wrap: wrap;
+  padding: 10px;
+  gap: 10px;
+  justify-content: space-around;
+  margin-bottom: 60px;
+}
+
+.med-item {
+  width: 45%;
+  background-color: #A2A59B;
+  color: white;
+  padding: 10px;
+  border-radius: 8px;
+  text-align: center;
+  box-sizing: border-box;
+}
+
+/* Navbar */
+.navbar {
+  position: fixed;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  display: flex;
+  justify-content: space-evenly;
+  padding: 10px 0;
+  background-color: #A2A59B;
+}
+
+.navbar button {
+  background: none;
+  border: none;
+  color: white;
+  font-size: 16px;
+  cursor: pointer;
+}
