@@ -9,26 +9,67 @@
 
   <!-- Grupo 1: Conta + Notificações -->
   <div class="config-card">
-    <button class="config-btn"> Conta <i class="fa fa-angle-right" style="margin-left: 75%;"></i></button>
+    <button class="config-btn">
+      <span class="btn-left">
+        <i class="fa fa-user-md"></i>
+        <span class="btn-text">Conta</span>
+      </span>
+      <i class="fa fa-angle-right btn-right"></i>
+    </button>
     <hr />
-    <button class="config-btn">Notificações <i class="fa fa-angle-right" style="margin-left: 58.70%;"></i></button>
+    <button class="config-btn">
+      <span class="btn-left">
+        <i class="fa fa-bell"></i>
+        <span class="btn-text">Notificações</span>
+      </span>
+      <i class="fa fa-toggle-off"></i>
+    </button>
   </div>
 
   <!-- Grupo 2: Outras opções -->
   <div class="config-card">
-    <button class="config-btn">Modo escuro <i class="fa fa-angle-right" style="margin-left: 56.70%;"></i></button>
+    <button class="config-btn">
+      <span class="btn-left">
+        <i class="fa fa-adjust"></i>
+        <span class="btn-text">Modo escuro</span>
+      </span>
+      <span class="btn-right"><i class="fa fa-toggle-off"></i></span>
+    </button>
     <hr />
-    <button class="config-btn">Idioma <i class="fa fa-angle-right" style="margin-left: 73%;"></i></button>
+    <button class="config-btn">
+      <span class="btn-left">
+        <i class="fa fa-globe"></i>
+        <span class="btn-text">Idioma</span>
+      </span>
+      <span class="btn-right"><i class="fa fa-angle-right"></i></span>
+    </button>
     <hr />
-    <button class="config-btn">Tema <i class="fa fa-angle-right" style="margin-left: 76.20%;"></i></button>
+    <button class="config-btn" onclick="carregarPagina('ajuda.html')">
+      <span class="btn-left">
+        <i class="fa fa-universal-access"></i>
+        <span class="btn-text">Ajuda</span>
+      </span>
+      <span class="btn-right"><i class="fa fa-angle-right"></i></span>
+    </button>
     <hr />
-    <button class="config-btn" onclick="carregarPagina('ajuda.html')">Ajuda <i class="fa fa-angle-right" style="margin-left: 75.50%;"></i></button>
+    <button class="config-btn">
+      <span class="btn-left">
+        <i class="fa fa-institution" style="font-size:13px;"></i>
+        <span class="btn-text">Política de Privacidade</span>
+      </span>
+      <span class="btn-right"><i class="fa fa-angle-right"></i></span>
+    </button>
     <hr />
-    <button class="config-btn">Política de Privacidade <i class="fa fa-angle-right" style="margin-left: 31%;"></i></button>
-    <hr />
-    <button class="config-btn">Relatório <i class="fa fa-angle-right" style="margin-left: 67%;"></i></button>
+    <button class="config-btn">
+      <span class="btn-left">
+        <i class="fa fa-file-text-o"></i>
+        <span class="btn-text">Relatório</span>
+      </span>
+      <span class="btn-right"><i class="fa fa-angle-right"></i></span>
+    </button>
   </div>
 
+  <!-- botão sair -->
   <div class="logout-section">
     <button onclick="localStorage.removeItem('paginaAtual'); carregarPagina('login.html')" class="logout-btn">
       Sair
