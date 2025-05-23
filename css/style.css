@@ -48,27 +48,34 @@ body, html {
 .botoes-superiores {
   display: flex;
   justify-content: space-between;
-  margin: 15px 0;
+  margin: 20px 0;
+  border-bottom: 1px solid #ddd;
 }
 
 .botoes-superiores button {
   flex: 1;
-  background-color: #00B8A9;
+  background: none;
   border: none;
   padding: 12px 0;
-  color: white;
-  font-weight: bold;
+  color: #555;
+  font-weight: 500;
   cursor: pointer;
-  border-right: 1px solid white;
+  border-bottom: 3px solid transparent;
+  transition: all 0.3s ease;
 }
 
-.botoes-superiores button:last-child {
-  border-right: none;
+.botoes-superiores button:hover {
+  color: #333;
+  background-color: #f8f8f8;
 }
 
 .botoes-superiores .ativo {
-  background-color: #027A74;
+  color: #027A74;
+  border-bottom: 3px solid #027A74;
+  font-weight: bold;
 }
+
+
 
 
 /* navbar | geral */
@@ -78,23 +85,33 @@ body, html {
   bottom: 0;
   left: 0;
   width: 100%;
-  background-color: #027A74;
+  background-color: white;
   display: flex;
   justify-content: space-around;
   padding: 10px 0;
+  box-shadow: 0 -2px 8px rgba(0, 0, 0, 0.1);
   z-index: 1000;
 }
 
-.navbar button {
+.nav-btn {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
   background: none;
   border: none;
-  color: white;
-  font-size: 16px;
+  color: var(--cinza);
+  font-size: 14px;
   cursor: pointer;
+  transition: color 0.3s;
 }
 
-.navbar button:hover {
-  text-decoration: underline;
+.nav-btn i {
+  font-size: 18px;
+  margin-bottom: 4px;
+}
+
+.nav-btn.ativo {
+  color: var(--verde-escuro);
 }
 
 /* Animação de transição de páginas */
