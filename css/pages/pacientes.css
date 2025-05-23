@@ -4,6 +4,50 @@
   height: 100vh;
   background-color: var(--branco);
 }
+/* titulo & pesquisa */
+.topo-pacientes {
+  display: flex;
+  justify-content: space-between;
+  align-items: flex-start;
+  padding: 0 1rem;
+  margin-bottom: 0.5rem;
+}
+
+.titulo-area h1 {
+  margin: 0;
+  font-size: 1.8rem;
+  font-weight: bold;
+  color: #000000;
+}
+
+.titulo-area p {
+  margin: 0.2rem 0 0 0;
+  font-size: 0.9rem;
+  color: #000000; 
+  line-height: 1.2;
+}
+
+.titulo-area p .alerta {
+  color:  var(--verde-agua); /* verde só para a palavra alerta */
+}
+
+.btn-pesquisa {
+  background-color: white; /* cinza */
+  border: 1.5px solid #999999; /* contorno cinza escuro */
+  border-radius: 50%; /* contorno redondo */
+  font-size: 1.3rem;
+  color: black; /* cinza escuro para ícone */
+  cursor: pointer;
+  padding: 8px 10px; /* mais espaço pra ficar redondo */
+  transition: background-color 0.3s, color 0.3s;
+  margin-top: 6px;
+}
+
+.btn-pesquisa:hover {
+  background-color: white; /* cinza um pouco mais escuro no hover */
+  color: rgba(74, 70, 70, 0.31); /* ícone mais escuro */
+}
+
 
 /* Filtros */
 .filtros-pacientes {
