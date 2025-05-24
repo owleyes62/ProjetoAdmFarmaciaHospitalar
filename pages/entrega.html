@@ -1,35 +1,52 @@
-<div class="info-paciente">
-  <p><strong>Nome:</strong> João da Silva</p>
-  <p><strong>Ficha:</strong> 123456</p>
-  <p><strong>Prioridade:</strong> <span class="prioridade verde">Verde</span></p>
-  <p><strong>Sexo:</strong> Masculino</p>
-  <p><strong>Idade:</strong> 45</p>
-</div>
+<div class="pagina-entrega"> 
+  <div class="cabecalho-paciente">
+    <p><strong>Nome:</strong> João da Silva</p>
+    <p><strong>Ficha:</strong> 1 </p>
+    <p><strong>Prioridade:</strong> <span class="prioridade verde">Verde</span></p>
+    <p><strong>Sexo:</strong> Masculino | <strong> Idade:</strong> 45 anos</p>
+    <p><strong>Paciente ambulatorio</strong></p>
+  </div>
 
-<!-- Botões superiores -->
-<div class="botoes-superiores">
-  <button onclick="carregarPagina('medicamento.html')">Medicamentos</button>
-  <button class="ativo">Entrega</button>
-  <button onclick="carregarPagina('prontuario.html')">Prontuário</button>
-</div>
+  <!-- Botões superiores -->
+  <div class="botoes-superiores">
+    <button onclick="carregarPagina('medicamento.html')">Medicamentos</button>
+    <button class="ativo">Entrega</button>
+    <button onclick="carregarPagina('prontuario.html')">Prontuário</button>
+  </div>
 
-<!-- Gráfico simulando tempo e quantidade -->
-<div class="grafico-container">
-  <div class="grafico">
-    <p><strong>Chegada:</strong> 15min</p>
-    <p><strong>Total:</strong> 8 itens</p>
+  <!-- Gráfico simulando tempo e quantidade -->
+  <div class="container-entrega">
+    <div class="info-medicamentos">
+      <p><strong>Total:</strong> 4</p>
+      <p><strong>Prontos:</strong> 3</p>
+    </div>
+
+    <div class="grafico-entrega">
+      <div class="circulo-grafico">
+        <span class="porcentagem">75%</span>
+      </div>
+      <span class="label-grafico">Entregas concluídas</span>
+    </div>
+  </div>
+
+
+  <!-- Lista de medicamentos lado a lado -->
+  <div class="lista-entrega">
+    <div class="entrega-item">
+      Dipirona 500mg - 3x ao dia
+    </div>
+    <div class="entrega-item">
+      Amoxicilina 875mg - 2x ao dia
+    </div>
+    <div class="entrega-item">
+      Paracetamol 750mg - Se necessário
+    </div>
+    <div class="entrega-item">
+      Omeprazol 20mg - 1x ao dia
+    </div>
   </div>
 </div>
 
-<!-- Lista de medicamentos lado a lado -->
-<div class="med-lista">
-  <div class="med-item">Paracetamol</div>
-  <div class="med-item">Dipirona</div>
-  <div class="med-item">Ibuprofeno</div>
-  <div class="med-item">Omeprazol</div>
-  <div class="med-item">Amoxicilina</div>
-  <div class="med-item">Loratadina</div>
-</div>
 
 <!-- Navbar -->
 <div class="navbar">

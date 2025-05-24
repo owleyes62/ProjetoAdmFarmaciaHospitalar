@@ -65,15 +65,30 @@ body, html {
   color: rgba(74, 70, 70, 0.31); 
 }
 
-/* inpaciente (pages: medicamento, entrega, prontuario) */
+/* infopaciente (pages: medicamento, entrega, prontuario) */
 
-.info-paciente {
-  background-color: #027A74;
-  color: white;
-  padding: 15px;
-  border-radius: 8px;
-  margin: 10px;
+.cabecalho-paciente {
+  background-color: #ffffff;
+  color: #333;
+  border-radius: 12px;
+  margin: 16px;
+  padding: 20px;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.05);
+  border-left: 6px solid #00B894;
+  display: flex;
+  flex-direction: column;
+  gap: 6px;
+  font-size: 0.95rem;
 }
+
+.cabecalho-paciente strong {
+  color: #555;
+}
+
+.cabecalho-paciente p {
+  margin: 4px 0;
+}
+
 
 .prioridade {
   padding: 2px 8px;
@@ -83,12 +98,14 @@ body, html {
 
 .prioridade.verde {
   background-color: #00B894;
+  color: white;
 }
 
 .prioridade.amarela {
   background-color: #FDCB6E;
-  color: black;
+  color: white;
 }
+
 /* Botões superios | geral */
 
 .botoes-superiores {
@@ -244,3 +261,4 @@ body, html {
   box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
   transition: all 0.2s ease;
 }
+

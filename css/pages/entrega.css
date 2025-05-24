@@ -1,4 +1,9 @@
 
+.pagina-entrega {
+  min-height: 120vh;
+}
+
+
 .top-buttons {
   display: flex;
   justify-content: space-around;
@@ -19,40 +24,88 @@
   color: white;
 }
 
-.grafico-container {
+/* grafico de entrega */
+.container-entrega {
   display: flex;
-  justify-content: center;
-  margin: 20px 0;
+  align-items: flex-start; /* alinha os filhos no topo */
+  justify-content: center; /* mantém o gráfico centralizado */
+  gap: 40px;
+  margin-top: 30px;
+  position: relative; /* para posicionar a info absoluta, se quiser */
 }
 
-.grafico {
-  width: 150px;
-  height: 150px;
-  border-radius: 50%;
-  background-color: #00B8A9;
+.info-medicamentos {
+  color: #333;
+  font-size: 1rem;
+  /* tira o background e box-shadow */
+  background: none;
+  box-shadow: none;
+  padding: 0px 0px 0px 7px;
+  margin-right: auto; /* empurra para esquerda dentro do flex */
+
+  /* pode limitar a largura para não ficar grande demais */
+  max-width: 150px;
+
+  /* opcional: para ajustar a posição um pouco para cima */
+  position: relative;
+  top: -10px;
+}
+
+
+.grafico-entrega {
   display: flex;
   flex-direction: column;
-  justify-content: center;
   align-items: center;
-  color: white;
-  font-size: 14px;
+  margin-right: 32%; /* remove margem extra */
 }
 
-.med-lista {
+
+.circulo-grafico {
+  width: 120px;
+  height: 120px;
+  border-radius: 50%;
+  border: 8px solid #00b894;
+  background: white;
   display: flex;
-  flex-wrap: wrap;
-  padding: 10px;
-  gap: 10px;
-  justify-content: space-around;
-  margin-bottom: 60px;
+  align-items: center;
+  justify-content: center;
+  box-shadow: 0 4px 10px rgba(0,0,0,0.1);
+  position: relative;
+  transition: all 0.3s ease-in-out;
 }
 
-.med-item {
-  width: 45%;
-  background-color: #A2A59B;
-  color: white;
-  padding: 10px;
-  border-radius: 8px;
-  text-align: center;
-  box-sizing: border-box;
+.porcentagem {
+  font-size: 1.5rem;
+  font-weight: bold;
+  color: #00b894;
 }
+
+.label-grafico {
+  margin-top: 10px;
+  font-size: 0.9rem;
+  color: #666;
+}
+
+
+/* lista de entrega */
+.lista-entrega {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr); /* duas colunas */
+  gap: 16px;
+  padding: 20px;
+}
+
+.entrega-item {
+  background-color: #ffffff;
+  border-left: 4px solid #00B894;
+  padding: 14px;
+  border-radius: 8px;
+  box-shadow: 0 2px 5px rgba(0, 0, 0, 0.08);
+  transition: transform 0.2s ease, box-shadow 0.2s ease;
+}
+
+.entrega-item:hover {
+  transform: scale(1.02);
+  box-shadow: 0 4px 10px rgba(0, 0, 0, 0.15);
+}
+
