@@ -1,8 +1,6 @@
 async function listarPacientes() {
   try {
-    const { data, error } = await supabaseClient.from('paciente').select('*');
-
-    console.log('Dados recebidos:', data);
+    const { data, error } = await supabaseClient.from('paciente').select('nome');
 
     if (error) {
       console.error('Erro ao buscar pacientes:', error);
@@ -10,26 +8,43 @@ async function listarPacientes() {
     }
 
     const container = document.getElementById('lista-pacientes');
-    container.innerHTML = '';
+    container.innerHTML = ''; // limpa o conteúdo anterior
 
     if (!data || data.length === 0) {
       container.innerHTML = '<p>Nenhum paciente encontrado.</p>';
       return;
     }
 
-    data.forEach(paciente => {
-      const div = document.createElement('div');
-      div.classList.add('paciente-card');
+    let contador = 1;  // contador começa em 1
 
-      div.innerHTML = `
-        <h3>${paciente.nome}</h3>
-        <p>Idade: ${paciente.idade}</p>
-        <p>Sexo: ${paciente.sexo}</p>
-        <p>Email: ${paciente.email}</p>
-        <p>Telefone: ${paciente.telefone}</p>
+    // Cria um bloco para cada paciente com o mesmo layout do exemplo
+    data.forEach(paciente => {
+      const pacienteDiv = document.createElement('div');
+      pacienteDiv.classList.add('linha-paciente');
+      pacienteDiv.setAttribute('onclick', "carregarPagina('entrega.html')");
+
+      pacienteDiv.innerHTML = `
+        <span class="check-caixa"></span>
+        <span class="circulo-numero">${contador}</span>
+        <div class="info-paciente">
+          <div class="linha-nome-sino">
+            <span class="nome-paciente">${paciente.nome}</span>
+            <i class="fa fa-bell sino-alerta"></i>
+          </div>
+          <span class="detalhe-paciente">
+            <span class="prioridade">Prioridade Alerta</span> - 09:45
+          </span>
+          <div class="barra-container">
+            <span class="entrega-label">Entrega</span>
+            <div class="barra-carregamento">
+              <div class="progresso" style="width: 60%;"></div>
+            </div>
+          </div>
+        </div>
       `;
 
-      container.appendChild(div);
+      container.appendChild(pacienteDiv);
+      container.appendChild(document.createElement('hr'));
     });
   } catch (err) {
     console.error('Erro inesperado:', err);
@@ -37,3 +52,5 @@ async function listarPacientes() {
 }
 
 listarPacientes();
+
+

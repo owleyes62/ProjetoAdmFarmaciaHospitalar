@@ -52,6 +52,17 @@ function configurarPaciente() {
       carregarPagina('config.html');
     });
   }
+
+  // ⚠️ Carregar os scripts necessários da tela pacientes
+  const scriptBd = document.createElement('script');
+  scriptBd.src = 'js/bdConnect.js';
+  document.body.appendChild(scriptBd);
+
+  scriptBd.onload = () => {
+    const scriptPaciente = document.createElement('script');
+    scriptPaciente.src = 'js/paciente.js';
+    document.body.appendChild(scriptPaciente);
+  };
 }
 
 function configurarConfig() {
