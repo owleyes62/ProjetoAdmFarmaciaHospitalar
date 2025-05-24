@@ -1,3 +1,5 @@
+<body>
+
 <div class="pacientes-container">
   <!-- Titulo -->
   <div class="topo-pacientes">
@@ -15,10 +17,10 @@
     <button class="ativo" >em espera</button>
     <button onclick="carregarPagina('atendidos.html')">atendidos</button>
   </div>
-
+    
   <!-- Lista de pacientes -->
-  <div class="lista-pacientes">
-    <div class="linha-paciente" onclick="carregarPagina('entrega.html')">
+  <!-- <div class="lista-pacientes"> -->
+    <!-- <div class="linha-paciente" onclick="carregarPagina('entrega.html')">
       <span class="check-caixa"></span>
       <span class="circulo-numero">2</span>
       <div class="info-paciente">
@@ -35,26 +37,16 @@
         </div>
       </div>
     </div>
-    <hr />
-    <div class="linha-paciente">
-      <span class="check-caixa"></span>
-      <span class="circulo-numero">2</span>
-      <div class="info-paciente">
-        <div class="linha-nome-sino">
-          <span class="nome-paciente">João Silva</span>
-          <i class="fa fa-bell sino-alerta"></i>
-        </div>
-        <span class="detalhe-paciente"><span class="prioridade">Prioridade Alerta</span>- 09:45</span>
-        <div class="barra-container">
-          <span class="entrega-label">Entrega</span>
-          <div class="barra-carregamento">
-            <div class="progresso" style="width: 60%;"></div>
-          </div>
-        </div>
-      </div>
+    <hr /> -->
+  <!-- </div> -->
+
+  <section id="secao-pacientes">
+    <h2>Lista de Pacientes</h2>
+    <div id="lista-pacientes">
+      <!-- Os pacientes serão exibidos aqui dinamicamente -->
     </div>
-    <hr />
-  </div>
+  </section>
+
 
   <!-- Navbar inferior -->
   <div class="navbar">
@@ -68,3 +60,6 @@
     </button>
   </div>
 </div>
+    <script src = "js/pacientes.js"></script>
+
+</body>
