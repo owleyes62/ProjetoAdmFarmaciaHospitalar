@@ -20,6 +20,8 @@ function carregarPagina(pagina) {
         if (pagina === 'login.html') configurarLogin();
         if (pagina === 'pacientes.html') configurarPaciente();
         if (pagina === 'config.html') configurarConfig(); // Se necessário
+        if (pagina === 'relatorio.html') configurarRelatorio(); // Se necessário
+
 
         // Remove a classe fade-in depois de um tempo (para a próxima troca funcionar)
         setTimeout(() => {
@@ -67,4 +69,42 @@ function configurarPaciente() {
 
 function configurarConfig() {
   // Código para configurar eventos da tela config (opcional)
+}
+
+// envio de relatorio
+function configurarRelatorio() {
+  const form = document.getElementById('form-relatorio');
+  if (form) {
+    form.addEventListener('submit', async function(e) {
+      e.preventDefault();
+
+      const nomeFuncionario = document.getElementById('nome').value;
+      const idFuncionario = parseInt(document.getElementById('id-funcionario').value);
+      const dataRelatorio = document.getElementById('data').value;
+      const numPacientesAtendidos = parseInt(document.getElementById('pacientes-atendidos').value);
+      const numErrosMedicamento = parseInt(document.getElementById('erros-medicamento').value);
+      const numErrosPessoais = parseInt(document.getElementById('erros-pessoais').value) || 0;
+      const observacoes = document.getElementById('descricao-dia').value;
+
+      const { data, error } = await supabaseClient
+        .from('relatorio')
+        .insert([{
+          nome_funcionario: nomeFuncionario,
+          id_funcionario: idFuncionario,
+          data: dataRelatorio,
+          num_pacientes_atendidos: numPacientesAtendidos,
+          num_erros_medicamento: numErrosMedicamento,
+          num_erros_pessoais: numErrosPessoais,
+          observacoes: observacoes
+        }]);
+
+      if (error) {
+        alert('Erro ao enviar relatório: ' + error.message);
+        console.error(error);
+      } else {
+        alert('Relatório enviado com sucesso!');
+        form.reset();
+      }
+    });
+  }
 }
