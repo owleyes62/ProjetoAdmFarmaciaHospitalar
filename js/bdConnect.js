@@ -8,7 +8,7 @@ async function testarConexao() {
   try {
     const { data, error } = await supabaseClient.from('paciente').select('*').limit(1);
     if (error) throw error;
-    alert('Conectado! Dados retornados: ' + JSON.stringify(data));
+    alert('Conectado! Dados Recebidos' ); // + JSON.stringify(data)
   } catch (err) {
     alert('Erro ao conectar: ' + err.message);
   }
