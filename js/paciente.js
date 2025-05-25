@@ -14,7 +14,7 @@ async function listarPacientes() {
       container.innerHTML = '<p>Nenhum paciente encontrado.</p>';
       return;
     }
-
+    let porcentagem = 100;
     let contador = 1;  // contador começa em 1
 
     // Cria um bloco para cada paciente com o mesmo layout do exemplo
@@ -37,13 +37,15 @@ async function listarPacientes() {
           <div class="barra-container">
             <span class="entrega-label">Entrega</span>
             <div class="barra-carregamento">
-              <div class="progresso" style="width: 60%;"></div>
+              <div class="progresso" style="width: ${porcentagem}%;"></div>
             </div>
           </div>
         </div>
       `;
 
       container.appendChild(pacienteDiv);
+      contador++;
+      porcentagem -= 20;
       container.appendChild(document.createElement('hr'));
     });
   } catch (err) {
