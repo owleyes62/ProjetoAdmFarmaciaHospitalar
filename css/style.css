@@ -21,7 +21,7 @@ body, html {
   overflow-y: auto;
 }
 
-/* titulo & pesquisa */
+/* titulo & button pesquisa */
 .topo-pacientes {
   display: flex;
   justify-content: space-between;
@@ -189,7 +189,7 @@ body, html {
   transition: opacity 0.3s ease;
 }
 
-/* botões (config e ajuda) */
+/* menu botões (config e ajuda) */
 
 .config-options {
   display: flex;
