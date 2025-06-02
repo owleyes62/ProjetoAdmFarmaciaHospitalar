@@ -2,18 +2,12 @@
 <div class="medicamento-container">
   <!-- Informações do Paciente -->
   <div class="cabecalho-paciente">
-    <p><strong>Nome:</strong> João da Silva</p>
-    <p><strong>Ficha:</strong> 1 </p>
-    <p><strong>Prioridade:</strong> <span class="prioridade verde">Verde</span></p>
-    <p><strong>Sexo:</strong> Masculino | <strong> Idade:</strong> 45 anos</p>
-    <p><strong>Paciente ambulatorio</strong></p>
+    
   </div>
 
   <!-- Botões de Navegação da Aba -->
   <div class="botoes-superiores">
-    <button class="ativo">Medicamentos</button>
-    <button onclick="carregarPagina('entrega.html')">Entrega</button>
-    <button onclick="carregarPagina('prontuario.html')">Prontuário</button>
+    
   </div>
 
   <!-- Lista de Medicamentos -->
@@ -36,3 +30,9 @@
     </button>
   </div>
 </div>
+
+<script>
+  const query = window.location.search.replace('?', '');
+  carregarTelaComBd('js/medicamento.js', query); // ou entrega.js / prontuario.js
+</script>
+

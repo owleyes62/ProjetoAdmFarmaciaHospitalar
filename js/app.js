@@ -1,12 +1,14 @@
 function carregarPagina(pagina) {
   const app = document.getElementById('app');
 
+  const [paginaLimpa, queryString] = pagina.split('?');
+
   // Aplica fade-out antes de trocar o conteúdo
   app.classList.add('fade-out');
 
   // Espera a transição terminar antes de trocar o conteúdo
   setTimeout(() => {
-    fetch(`pages/${pagina}`)
+    fetch(`pages/${pagina.split('?')[0]}`)
       .then(res => res.text())
       .then(html => {
         app.innerHTML = html;
@@ -16,14 +18,15 @@ function carregarPagina(pagina) {
         app.classList.remove('fade-out');
         app.classList.add('fade-in');
 
-        // ⚠️ Chamar função de configuração da página carregada
-        if (pagina === 'login.html') configurarLogin();
-        if (pagina === 'pacientes.html') configurarPaciente();
-        if (pagina === 'config.html') configurarConfig(); // Se necessário
-        if (pagina === 'relatorio.html') configurarRelatorio(); // Se necessário
+        // Reexecutar scripts após carregar HTML
+        if (paginaLimpa === 'login.html') configurarLogin();
+        if (paginaLimpa === 'pacientes.html') configurarPaciente();
+        if (paginaLimpa === 'config.html') configurarConfig();
+        if (paginaLimpa === 'relatorio.html') configurarRelatorio();
+        if (paginaLimpa === 'medicamento.html') configurarMedicamento(queryString);
+        if (paginaLimpa === 'entrega.html') configurarEntrega(queryString);
+        if (paginaLimpa === 'prontuario.html') configurarProntuario(queryString);
 
-
-        // Remove a classe fade-in depois de um tempo (para a próxima troca funcionar)
         setTimeout(() => {
           app.classList.remove('fade-in');
         }, 300);
@@ -108,3 +111,53 @@ function configurarRelatorio() {
     });
   }
 }
+
+function carregarPaginaComPaciente(pagina, pacienteId) {
+  // Atualiza a URL no navegador
+  window.history.pushState({}, '', `${pagina}?pacienteId=${pacienteId}`);
+
+  // Chama o carregamento do conteúdo
+  carregarPagina(`${pagina}?pacienteId=${pacienteId}`);
+}
+
+function configurarMedicamento(queryString) {
+  const scriptBd = document.createElement('script');
+  scriptBd.src = 'js/bdConnect.js';
+  document.body.appendChild(scriptBd);
+
+  scriptBd.onload = () => {
+    const scriptMedicamento = document.createElement('script');
+    scriptMedicamento.type = 'module';
+    scriptMedicamento.src = 'js/medicamento.js' + (queryString ? '?' + queryString : '');
+    document.body.appendChild(scriptMedicamento);
+  };
+}
+
+function configurarEntrega(queryString) {
+  const scriptBd = document.createElement('script');
+  scriptBd.src = 'js/bdConnect.js';
+  document.body.appendChild(scriptBd);
+
+  scriptBd.onload = () => {
+    const scriptMedicamento = document.createElement('script');
+    scriptMedicamento.type = 'module';
+    scriptMedicamento.src = 'js/entrega.js' + (queryString ? '?' + queryString : '');
+    document.body.appendChild(scriptMedicamento);
+  };
+}
+
+
+function configurarProntuario(queryString) {
+  const scriptBd = document.createElement('script');
+  scriptBd.src = 'js/bdConnect.js';
+  document.body.appendChild(scriptBd);
+
+  scriptBd.onload = () => {
+    const scriptMedicamento = document.createElement('script');
+    scriptMedicamento.type = 'module';
+    scriptMedicamento.src = 'js/prontuario.js' + (queryString ? '?' + queryString : '');
+    document.body.appendChild(scriptMedicamento);
+  };
+}
+
+

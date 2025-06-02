@@ -1,6 +1,8 @@
+
+
 async function listarPacientes() {
   try {
-    const { data, error } = await supabaseClient.from('paciente').select('nome');
+    const { data, error } = await supabaseClient.from('paciente').select('id_paciente, nome');
 
     if (error) {
       console.error('Erro ao buscar pacientes:', error);
@@ -8,20 +10,19 @@ async function listarPacientes() {
     }
 
     const container = document.getElementById('lista-pacientes');
-    container.innerHTML = ''; // limpa o conteúdo anterior
+    container.innerHTML = '';
 
     if (!data || data.length === 0) {
       container.innerHTML = '<p>Nenhum paciente encontrado.</p>';
       return;
     }
-    let porcentagem = 100;
-    let contador = 1;  // contador começa em 1
 
-    // Cria um bloco para cada paciente com o mesmo layout do exemplo
+    let porcentagem = 100;
+    let contador = 1;
+
     data.forEach(paciente => {
       const pacienteDiv = document.createElement('div');
       pacienteDiv.classList.add('linha-paciente');
-      pacienteDiv.setAttribute('onclick', "carregarPagina('entrega.html')");
 
       pacienteDiv.innerHTML = `
         <span class="check-caixa"></span>
@@ -40,6 +41,11 @@ async function listarPacientes() {
               <div class="progresso" style="width: ${porcentagem}%;"></div>
             </div>
           </div>
+          <div class="botoes-paciente">
+            <button onclick="carregarPaginaComPaciente('medicamento.html', ${paciente.id_paciente})">Medicamentos</button>
+            <button onclick="carregarPaginaComPaciente('entrega.html', ${paciente.id_paciente})">Entrega</button>
+            <button onclick="carregarPaginaComPaciente('prontuario.html', ${paciente.id_paciente})">Prontuário</button>
+          </div>
         </div>
       `;
 
@@ -48,11 +54,10 @@ async function listarPacientes() {
       porcentagem -= 20;
       container.appendChild(document.createElement('hr'));
     });
+
   } catch (err) {
     console.error('Erro inesperado:', err);
   }
 }
 
 listarPacientes();
-
-
