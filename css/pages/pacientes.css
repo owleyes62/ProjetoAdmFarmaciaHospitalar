@@ -167,7 +167,7 @@
   color: var(--branco);
   border: none;
   border-radius: 5px;
-  font-size: 11px;
+  font-size: 9px;
   font-weight: 500;
   cursor: pointer;
   transition: background-color 0.2s ease, transform 0.1s ease;
