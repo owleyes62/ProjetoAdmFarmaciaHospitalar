@@ -3,22 +3,19 @@ function carregarPagina(pagina) {
 
   const [paginaLimpa, queryString] = pagina.split('?');
 
-  // Aplica fade-out antes de trocar o conteúdo
   app.classList.add('fade-out');
 
-  // Espera a transição terminar antes de trocar o conteúdo
   setTimeout(() => {
-    fetch(`pages/${pagina.split('?')[0]}`)
+    fetch(`pages/${paginaLimpa}`)
       .then(res => res.text())
       .then(html => {
         app.innerHTML = html;
         localStorage.setItem('paginaAtual', pagina);
 
-        // Aplica fade-in depois de trocar o conteúdo
         app.classList.remove('fade-out');
         app.classList.add('fade-in');
 
-        // Reexecutar scripts após carregar HTML
+        // Chama a função de configuração da página carregada
         if (paginaLimpa === 'login.html') configurarLogin();
         if (paginaLimpa === 'pacientes.html') configurarPaciente();
         if (paginaLimpa === 'config.html') configurarConfig();
@@ -35,20 +32,25 @@ function carregarPagina(pagina) {
   }, 300);
 }
 
-// Sempre iniciar na tela de login
+window.carregarPagina = carregarPagina;
+
 window.addEventListener('DOMContentLoaded', () => {
   carregarPagina('login.html');
 });
 
 function configurarLogin() {
-  const form = document.getElementById('login-form');
-  if (form) {
-    form.addEventListener('submit', function (e) {
-      e.preventDefault(); // Impede o envio do formulário
-      carregarPagina('pacientes.html');
-    });
-  }
+  const scriptBd = document.createElement('script');
+  scriptBd.src = 'js/bdConnect.js';
+  document.body.appendChild(scriptBd);
+
+  scriptBd.onload = () => {
+    const scriptLogin = document.createElement('script');
+    scriptLogin.type = 'module';
+    scriptLogin.src = 'js/login.js';
+    document.body.appendChild(scriptLogin);
+  };
 }
+
 
 function configurarPaciente() {
   const btnConfig = document.getElementById('btn-config');
@@ -119,6 +121,8 @@ function carregarPaginaComPaciente(pagina, pacienteId) {
   // Chama o carregamento do conteúdo
   carregarPagina(`${pagina}?pacienteId=${pacienteId}`);
 }
+window.carregarPaginaComPaciente = carregarPaginaComPaciente;
+
 
 function configurarMedicamento(queryString) {
   const scriptBd = document.createElement('script');
