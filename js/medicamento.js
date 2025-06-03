@@ -1,15 +1,24 @@
-// medicamento.js
 const params = new URLSearchParams(window.location.search);
 const pacienteId = params.get('pacienteId');
-
-
-
 
 if (!pacienteId) {
   console.error('ID do paciente não informado na URL.');
 } else {
   carregarCabecalhoPaciente(pacienteId);
-  buscarMedicamentosDoPaciente(pacienteId);
+  inserirBotoesPaciente(pacienteId);
+  buscarMedicamentosDoPaciente(pacienteId); // Supondo que você vai implementar essa parte
+  
+}
+
+function inserirBotoesPaciente(pacienteId) {
+  const container = document.querySelector('.botoes-superiores');
+  if (!container) return;
+
+  container.innerHTML = `
+    <button class="nav-btn ativo">Medicamentos</button>
+    <button onclick="carregarPaginaComPaciente('entrega.html', ${pacienteId})">Entrega</button>
+    <button onclick="carregarPaginaComPaciente('prontuario.html', ${pacienteId})">Prontuário</button>
+  `;
 }
 
 async function carregarCabecalhoPaciente(id) {
@@ -23,6 +32,8 @@ async function carregarCabecalhoPaciente(id) {
     if (error) throw error;
 
     const cabecalho = document.querySelector('.cabecalho-paciente');
+    if (!cabecalho) return;
+
     cabecalho.innerHTML = `
       <p><strong>Nome:</strong> ${data.nome}</p>
       <p><strong>Ficha:</strong> ${data.id_paciente}</p>
@@ -34,4 +45,3 @@ async function carregarCabecalhoPaciente(id) {
     console.error('Erro ao carregar cabeçalho do paciente:', err.message);
   }
 }
-

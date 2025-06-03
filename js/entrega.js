@@ -7,8 +7,22 @@ if (!pacienteId) {
   console.error('ID do paciente não informado na URL.');
 } else {
   carregarCabecalhoPaciente(pacienteId);
-  carregarEntregasPaciente(pacienteId);
+  inserirBotoesPaciente(pacienteId);
+  buscarMedicamentosDoPaciente(pacienteId); // Supondo que você vai implementar essa parte
+  
 }
+
+function inserirBotoesPaciente(pacienteId) {
+  const container = document.querySelector('.botoes-superiores');
+  if (!container) return;
+
+  container.innerHTML = `
+    <button onclick="carregarPaginaComPaciente('medicamento.html', ${pacienteId})">Medicamentos</button>
+    <button class="nav-btn ativo"">Entrega</button>
+    <button onclick="carregarPaginaComPaciente('prontuario.html', ${pacienteId})">Prontuário</button>
+  `;
+}
+
 
 async function carregarCabecalhoPaciente(id) {
   try {
