@@ -6,10 +6,12 @@ if (!pacienteId) {
 } else {
   carregarCabecalhoPaciente(pacienteId);
   inserirBotoesPaciente(pacienteId);
-  buscarMedicamentosDoPaciente(pacienteId); // Supondo que você vai implementar essa parte
+  carregarProntuarioPaciente(pacienteId)
   
 }
 
+
+// botões de navegação superior da tela prontuario
 function inserirBotoesPaciente(pacienteId) {
   const container = document.querySelector('.botoes-superiores');
   if (!container) return;
@@ -21,7 +23,7 @@ function inserirBotoesPaciente(pacienteId) {
   `;
 }
 
-
+// cabeçalho da tela prontuario
 async function carregarCabecalhoPaciente(id) {
   try {
     const { data, error } = await supabaseClient

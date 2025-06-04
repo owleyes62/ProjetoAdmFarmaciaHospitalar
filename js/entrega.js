@@ -7,11 +7,11 @@ if (!pacienteId) {
   console.error('ID do paciente não informado na URL.');
 } else {
   carregarCabecalhoPaciente(pacienteId);
-  inserirBotoesPaciente(pacienteId);
-  buscarMedicamentosDoPaciente(pacienteId); // Supondo que você vai implementar essa parte
+  inserirBotoesPaciente(pacienteId); 
+  carregarEntregasPaciente(pacienteId)
   
 }
-
+// botões de navegação superior da tela entrega 
 function inserirBotoesPaciente(pacienteId) {
   const container = document.querySelector('.botoes-superiores');
   if (!container) return;
@@ -23,7 +23,7 @@ function inserirBotoesPaciente(pacienteId) {
   `;
 }
 
-
+// cabeçalho da tela entrega 
 async function carregarCabecalhoPaciente(id) {
   try {
     const { data, error } = await supabaseClient
