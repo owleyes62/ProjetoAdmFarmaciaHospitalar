@@ -35,13 +35,14 @@ window.addEventListener('DOMContentLoaded', () => {
   carregarPagina('login.html');
 });
 
-function removerScriptExistente(srcParcial) {
+function removerScriptExistente(nomeScript) {
   document.querySelectorAll('script').forEach(script => {
-    if (script.src.includes(srcParcial)) {
+    if (script.src && script.src.includes(nomeScript)) {
       script.remove();
     }
   });
 }
+
 
 function configurarLogin() {
   removerScriptExistente('js/bdConnect.js');
