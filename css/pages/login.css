@@ -28,12 +28,11 @@
 }
 
 .login-box button {
-  width: 100%;
   padding: 0.6rem;
   background-color: var(--verde-agua);
   color: var(--branco);
   border: none;
-  border-radius: 4px;
+  border-radius: 50px;
   cursor: pointer;
   transition: background 0.3s ease;
 }
@@ -41,3 +40,31 @@
 .login-box button:hover {
   background-color: #029a8f;
 }
+
+
+.botao-google {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  padding: 8px;
+  background-color: transparent;
+  border: none;
+  cursor: pointer;
+  margin-top: 20px; /* joga um pouco para baixo */
+  transition: background-color 0.3s ease;
+  border-radius: 50%;
+  width: 40px;
+  height: 40px;
+  box-shadow: 0 2px 6px rgb(0 0 0 / 0.15);
+}
+
+.botao-google:hover {
+  background-color: #f0f0f0;
+}
+
+.botao-google svg {
+  width: 24px;
+  height: 24px;
+  display: block;
+}
+

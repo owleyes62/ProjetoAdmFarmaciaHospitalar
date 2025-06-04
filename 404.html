@@ -1,0 +1,16 @@
+<!-- 404.html -->
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+  <meta charset="UTF-8" />
+  <title>Redirecionando...</title>
+  <script>
+    // Redireciona para index.html usando o hash da URL original
+    const fullPath = window.location.pathname + window.location.search;
+    window.location.href = "/index.html#" + fullPath;
+  </script>
+</head>
+<body>
+  Redirecionando...
+</body>
+</html>

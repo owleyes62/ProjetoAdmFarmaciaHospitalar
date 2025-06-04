@@ -25,3 +25,20 @@ if (form) {
 } else {
   console.error('Formulário de login não encontrado!');
 }
+
+
+// async function loginWithGoogle() {
+//   const { data, error } = await supabaseClient.auth.signInWithOAuth({
+//     provider: 'google',
+//     options: {
+//       // Aqui você pode adicionar scopes adicionais se quiser, ex: 'email profile'
+//       redirectTo: window.location.origin // ou outra URL para onde quer redirecionar após login
+//     }
+//   });
+
+//   if (error) {
+//     console.error('Erro no login com Google:', error.message);
+//   } else {
+//     console.log('Redirecionando para login Google...');
+//   }
+// }

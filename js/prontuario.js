@@ -1,12 +1,14 @@
-const params = new URLSearchParams(window.location.search);
-const pacienteId = params.get('pacienteId');
+const scriptUrl = import.meta.url || document.currentScript.src;
+const urlParams = new URLSearchParams(scriptUrl.split('?')[1]);
+const pacienteId = urlParams.get('pacienteId');
+
 
 if (!pacienteId) {
   console.error('ID do paciente não informado na URL.');
 } else {
   carregarCabecalhoPaciente(pacienteId);
   inserirBotoesPaciente(pacienteId);
-  carregarProntuarioPaciente(pacienteId)
+  // carregarProntuarioPaciente(pacienteId)
   
 }
 
@@ -47,34 +49,34 @@ async function carregarCabecalhoPaciente(id) {
   }
 }
 
-async function carregarProntuarioPaciente(id) {
-  try {
-    const { data, error } = await supabaseClient
-      .from('prontuario')
-      .select('data, observacoes')
-      .eq('id_paciente', id)
-      .order('data', { ascending: false });
+// async function carregarProntuarioPaciente(id) {
+//   try {
+//     const { data, error } = await supabaseClient
+//       .from('prontuario')
+//       .select('data, observacoes')
+//       .eq('id_paciente', id)
+//       .order('data', { ascending: false });
 
-    if (error) throw error;
+//     if (error) throw error;
 
-    const containerProntuario = document.querySelector('.conteudo-prontuario');
-    containerProntuario.innerHTML = '';
+//     const containerProntuario = document.querySelector('.conteudo-prontuario');
+//     containerProntuario.innerHTML = '';
 
-    if (!data || data.length === 0) {
-      containerProntuario.innerHTML = '<p>Nenhum prontuário encontrado para este paciente.</p>';
-      return;
-    }
+//     if (!data || data.length === 0) {
+//       containerProntuario.innerHTML = '<p>Nenhum prontuário encontrado para este paciente.</p>';
+//       return;
+//     }
 
-    data.forEach(registro => {
-      const bloco = document.createElement('div');
-      bloco.classList.add('bloco-prontuario');
-      bloco.innerHTML = `
-        <p><strong>Data:</strong> ${new Date(registro.data).toLocaleDateString()}</p>
-        <p><strong>Observações:</strong> ${registro.observacoes}</p>
-      `;
-      containerProntuario.appendChild(bloco);
-    });
-  } catch (err) {
-    console.error('Erro ao carregar prontuário:', err.message);
-  }
-}
+//     data.forEach(registro => {
+//       const bloco = document.createElement('div');
+//       bloco.classList.add('bloco-prontuario');
+//       bloco.innerHTML = `
+//         <p><strong>Data:</strong> ${new Date(registro.data).toLocaleDateString()}</p>
+//         <p><strong>Observações:</strong> ${registro.observacoes}</p>
+//       `;
+//       containerProntuario.appendChild(bloco);
+//     });
+//   } catch (err) {
+//     console.error('Erro ao carregar prontuário:', err.message);
+//   }
+// }

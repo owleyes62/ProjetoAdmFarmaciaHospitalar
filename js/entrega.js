@@ -1,5 +1,7 @@
-const params = new URLSearchParams(window.location.search);
-const pacienteId = params.get('pacienteId');
+const scriptUrl = import.meta.url || document.currentScript.src;
+const urlParams = new URLSearchParams(scriptUrl.split('?')[1]);
+const pacienteId = urlParams.get('pacienteId');
+
 
 
 
@@ -8,7 +10,7 @@ if (!pacienteId) {
 } else {
   carregarCabecalhoPaciente(pacienteId);
   inserirBotoesPaciente(pacienteId); 
-  carregarEntregasPaciente(pacienteId)
+  // carregarEntregasPaciente(pacienteId)
   
 }
 // botões de navegação superior da tela entrega 
@@ -47,49 +49,49 @@ async function carregarCabecalhoPaciente(id) {
   }
 }
 
-async function carregarEntregasPaciente(id) {
-  try {
-    const { data, error } = await supabaseClient
-      .from('entrega')
-      .select('medicamento, frequencia, status')
-      .eq('id_paciente', id);
+// async function carregarEntregasPaciente(id) {
+//   try {
+//     const { data, error } = await supabaseClient
+//       .from('entrega')
+//       .select('medicamento, frequencia, status')
+//       .eq('id_paciente', id);
 
-    if (error) throw error;
+//     if (error) throw error;
 
-    const listaEntrega = document.querySelector('.lista-entrega');
-    listaEntrega.innerHTML = '';
+//     const listaEntrega = document.querySelector('.lista-entrega');
+//     listaEntrega.innerHTML = '';
 
-    if (!data || data.length === 0) {
-      listaEntrega.innerHTML = '<p>Nenhuma entrega encontrada para este paciente.</p>';
-      return;
-    }
+//     if (!data || data.length === 0) {
+//       listaEntrega.innerHTML = '<p>Nenhuma entrega encontrada para este paciente.</p>';
+//       return;
+//     }
 
-    data.forEach(entrega => {
-      const item = document.createElement('div');
-      item.classList.add('entrega-item');
-      item.textContent = `${entrega.medicamento} - ${entrega.frequencia} (${entrega.status})`;
-      listaEntrega.appendChild(item);
-    });
+//     data.forEach(entrega => {
+//       const item = document.createElement('div');
+//       item.classList.add('entrega-item');
+//       item.textContent = `${entrega.medicamento} - ${entrega.frequencia} (${entrega.status})`;
+//       listaEntrega.appendChild(item);
+//     });
 
-    const total = data.length;
-    const prontos = data.filter(e => e.status.toLowerCase() === 'pronto').length;
+//     const total = data.length;
+//     const prontos = data.filter(e => e.status.toLowerCase() === 'pronto').length;
 
-    const infoMedicamentos = document.querySelector('.info-medicamentos');
-    if (infoMedicamentos) {
-      infoMedicamentos.innerHTML = `
-        <p><strong>Total:</strong> ${total}</p>
-        <p><strong>Prontos:</strong> ${prontos}</p>
-      `;
-    }
+//     const infoMedicamentos = document.querySelector('.info-medicamentos');
+//     if (infoMedicamentos) {
+//       infoMedicamentos.innerHTML = `
+//         <p><strong>Total:</strong> ${total}</p>
+//         <p><strong>Prontos:</strong> ${prontos}</p>
+//       `;
+//     }
 
-    const porcentagem = prontos && total ? Math.round((prontos / total) * 100) : 0;
-    const porcentagemElem = document.querySelector('.porcentagem');
-    if (porcentagemElem) {
-      porcentagemElem.textContent = `${porcentagem}%`;
-    }
-  } catch (err) {
-    console.error('Erro ao carregar entregas:', err.message);
-  }
-}
+//     const porcentagem = prontos && total ? Math.round((prontos / total) * 100) : 0;
+//     const porcentagemElem = document.querySelector('.porcentagem');
+//     if (porcentagemElem) {
+//       porcentagemElem.textContent = `${porcentagem}%`;
+//     }
+//   } catch (err) {
+//     console.error('Erro ao carregar entregas:', err.message);
+//   }
+// }
 
 

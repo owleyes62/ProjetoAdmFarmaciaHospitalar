@@ -1,5 +1,7 @@
-const params = new URLSearchParams(window.location.search);
-const pacienteId = params.get('pacienteId');
+// Extrai o pacienteId diretamente da URL do script atual
+const scriptUrl = import.meta.url || document.currentScript.src;
+const urlParams = new URLSearchParams(scriptUrl.split('?')[1]);
+const pacienteId = urlParams.get('pacienteId');
 
 if (!pacienteId) {
   console.error('ID do paciente não informado na URL.');
