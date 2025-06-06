@@ -1,4 +1,4 @@
-/* relatorio.css */
+/* container principal do relatório */
 .relatorio-container {
   max-width: 600px;
   margin: 40px auto;
@@ -9,6 +9,7 @@
   font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
 }
 
+/* título do relatório */
 .relatorio-container h1 {
   text-align: center;
   color: #2c3e50;
@@ -17,6 +18,8 @@
   font-size: 2.2rem;
 }
 
+
+/* grupo de campos do formulário */
 .form-group {
   margin-bottom: 18px;
   display: flex;
@@ -41,6 +44,7 @@
   resize: vertical;
 }
 
+/* estilo dos campos quando focados */
 .form-group input[type="text"]:focus,
 .form-group input[type="number"]:focus,
 .form-group input[type="date"]:focus,
@@ -49,6 +53,8 @@
   outline: none;
 }
 
+
+/* botão de envio do relatório */
 button[type="submit"] {
   width: 100%;
   padding: 14px 0;
@@ -65,4 +71,3 @@ button[type="submit"] {
 button[type="submit"]:hover {
   background-color: #1c5980;
 }
-

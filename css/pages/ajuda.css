@@ -1,3 +1,4 @@
+/* Container principal da tela de ajuda */
 .ajuda-container {
   display: flex;
   flex-direction: column;
@@ -7,11 +8,14 @@
   gap: 30px;
 }
 
+/* Estilo do título principal (h2) dentro do container */
 .ajuda-container h2 {
   color: #000000;
   font-size: 24px;
 }
 
+
+/* Grupos de ajuda e acessibilidade: agrupam botões ou seções */
 .grupo-ajuda,
 .grupo-acessibilidade {
   display: flex;
@@ -21,6 +25,8 @@
   max-width: 300px;
 }
 
+
+/* Botão de ajuda genérico */
 .ajuda-btn {
   padding: 10px;
   background-color: #00B8A9;

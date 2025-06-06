@@ -1,10 +1,11 @@
+/* container da página de medicamentos */
 .medicamento-container {
   font-family: sans-serif;
   padding-bottom: 80px;
 }
 
-/*  lista de medicamentos */
 
+/* lista de medicamentos */
 .lista-medicamentos {
   display: flex;
   flex-direction: column;
@@ -13,12 +14,14 @@
   gap: 12px;
 }
 
+
+/* item individual de medicamento */
 .med-item {
   background-color: #ffffff;
   border-left: 5px solid #00B894;
   padding: 16px;
-  width: 90%; /* Aumentado horizontalmente */
-  max-width: none; /* Sem limite máximo */
+  width: 90%;
+  max-width: none;
   border-radius: 10px;
   box-shadow: 0 2px 6px rgba(0, 0, 0, 0.08);
   display: flex;
@@ -28,21 +31,21 @@
 }
 
 .med-item:hover {
-  box-shadow: 0 4px 12px rgba(232, 228, 228, 0); /* Mais sutil e elegante */
-  transform: scale(1.01); /* Leve aumento em vez de "pular" */
+  box-shadow: 0 4px 12px rgba(232, 228, 228, 0);
+  transform: scale(1.01);
 }
 
+
+/* nome do medicamento */
 .med-nome {
   font-weight: bold;
   font-size: 1.05rem;
   color: #333;
 }
 
+
+/* frequência do medicamento */
 .med-frequencia {
   font-size: 0.9rem;
   color: #666;
 }
-
-
-
-

@@ -1,9 +1,10 @@
-
+/* página de entrega */
 .pagina-entrega {
   min-height: 120vh;
 }
 
 
+/* botões superiores */
 .top-buttons {
   display: flex;
   justify-content: space-around;
@@ -24,41 +25,39 @@
   color: white;
 }
 
-/* grafico de entrega */
+
+/* container principal de entrega */
 .container-entrega {
   display: flex;
-  align-items: flex-start; /* alinha os filhos no topo */
-  justify-content: center; /* mantém o gráfico centralizado */
+  align-items: flex-start; 
+  justify-content: center;
   gap: 40px;
   margin-top: 30px;
-  position: relative; /* para posicionar a info absoluta, se quiser */
+  position: relative; 
 }
 
+
+/* informações de medicamentos */
 .info-medicamentos {
   color: #333;
   font-size: 1rem;
-  /* tira o background e box-shadow */
   background: none;
   box-shadow: none;
   padding: 0px 0px 0px 7px;
-  margin-right: auto; /* empurra para esquerda dentro do flex */
-
-  /* pode limitar a largura para não ficar grande demais */
+  margin-right: auto;
   max-width: 150px;
-
-  /* opcional: para ajustar a posição um pouco para cima */
   position: relative;
   top: -10px;
 }
 
 
+/* gráfico de entrega */
 .grafico-entrega {
   display: flex;
   flex-direction: column;
   align-items: center;
-  margin-right: 32%; /* remove margem extra */
+  margin-right: 32%;
 }
-
 
 .circulo-grafico {
   width: 120px;
@@ -90,7 +89,7 @@
 /* lista de entrega */
 .lista-entrega {
   display: grid;
-  grid-template-columns: repeat(2, 1fr); /* duas colunas */
+  grid-template-columns: repeat(2, 1fr);
   gap: 16px;
   padding: 20px;
 }
@@ -108,4 +107,3 @@
   transform: scale(1.02);
   box-shadow: 0 4px 10px rgba(0, 0, 0, 0.15);
 }
-

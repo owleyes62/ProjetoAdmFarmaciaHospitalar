@@ -1,3 +1,4 @@
+/* Variáveis globais e reset básico */
 :root {
   --verde-escuro: #027A74;
   --verde-agua: #00B8A9;
@@ -21,7 +22,7 @@ body, html {
   overflow-y: auto;
 }
 
-/* titulo & button pesquisa */
+/* Topo da página: título, subtítulo e botão pesquisa */
 .topo-pacientes {
   display: flex;
   justify-content: space-between;
@@ -40,33 +41,32 @@ body, html {
 .titulo-area p {
   margin: 0.2rem 0 0 0;
   font-size: 0.9rem;
-  color: #000000; 
+  color: #000000;
   line-height: 1.2;
 }
 
 .titulo-area p .alerta {
-  color:  var(--verde-agua); 
+  color: var(--verde-agua);
 }
 
 .btn-pesquisa {
-  background-color: white; /* cinza */
-  border: 1.5px solid #999999; /* contorno cinza escuro */
-  border-radius: 50%; /* contorno redondo */
+  background-color: white;
+  border: 1.5px solid #999999;
+  border-radius: 50%;
   font-size: 1.3rem;
-  color: black; 
+  color: black;
   cursor: pointer;
-  padding: 8px 10px; /* mais espaço pra ficar redondo */
+  padding: 8px 10px;
   transition: background-color 0.3s, color 0.3s;
   margin-top: 6px;
 }
 
 .btn-pesquisa:hover {
-  background-color: white; 
-  color: rgba(74, 70, 70, 0.31); 
+  background-color: white;
+  color: rgba(74, 70, 70, 0.31);
 }
 
-/* infopaciente (pages: medicamento, entrega, prontuario) */
-
+/* Cabeçalho do paciente com informações e estilo de prioridade */
 .cabecalho-paciente {
   background-color: #ffffff;
   color: #333;
@@ -89,7 +89,6 @@ body, html {
   margin: 4px 0;
 }
 
-
 .prioridade {
   padding: 2px 8px;
   border-radius: 5px;
@@ -106,8 +105,7 @@ body, html {
   color: white;
 }
 
-/* Botões superios | geral */
-
+/* Botões superiores: layout, estilo e estado ativo */
 .botoes-superiores {
   display: flex;
   justify-content: space-between;
@@ -138,11 +136,7 @@ body, html {
   font-weight: bold;
 }
 
-
-
-
-/* navbar | geral */
-
+/* Navbar fixa inferior e seus botões */
 .navbar {
   position: fixed;
   bottom: 0;
@@ -177,8 +171,7 @@ body, html {
   color: var(--verde-escuro);
 }
 
-/* Animação de transição de páginas */
-
+/* Animações de transição de páginas */
 .fade-out {
   opacity: 0;
   transition: opacity 0.3s ease;
@@ -189,8 +182,7 @@ body, html {
   transition: opacity 0.3s ease;
 }
 
-/* menu botões (config e ajuda) */
-
+/* Menu de configurações: container, botões e efeitos */
 .config-options {
   display: flex;
   flex-direction: column;
@@ -226,7 +218,7 @@ body, html {
 }
 
 .btn-text {
-  font-weight:lighter;
+  font-weight: lighter;
 }
 
 .btn-right {
@@ -261,4 +253,3 @@ body, html {
   box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
   transition: all 0.2s ease;
 }
-

@@ -1,9 +1,11 @@
+/* container principal da tela de pacientes */
 .pacientes-container {
   display: flex;
   flex-direction: column;
   height: 100vh;
   background-color: var(--branco);
 }
+
 
 /* lista paciente bd */
 #secao-pacientes {
@@ -22,7 +24,6 @@
   padding: 15px;
   box-shadow: 0 0 8px rgba(0, 0, 0, 0.1);
 }
-
 
 
 /* Filtros */
@@ -47,6 +48,7 @@
 .filtros-pacientes .ativo {
   background-color: var(--cinza);
 }
+
 
 /* Lista de pacientes */
 .linha-paciente {
@@ -97,7 +99,7 @@
 .linha-nome-sino {
   display: flex;
   align-items: center;
-  gap: 10px; /* espaçamento entre nome e sino */
+  gap: 10px;
 }
 
 .nome-paciente {
@@ -108,8 +110,8 @@
 
 .sino-alerta {
   position: absolute;
-  right: 0;          /* encosta na borda direita */
-  top: 20px;            /* alinha ao topo */
+  right: 0;
+  top: 20px;
   color: red;
   font-size: 1rem;
 }
@@ -124,16 +126,18 @@
   color: var(--verde-agua);
 }
 
+
+/* barra de entrega */
 .barra-container {
   position: relative;
   width: 100%;
-  margin-top: 18px; /* espaço entre o texto prioridade e a barra */
+  margin-top: 18px;
 }
 
 .entrega-label {
   position: absolute;
   right: 0;
-  top: -18px; /* ajusta para ficar em cima da barra, colado */
+  top: -18px;
   font-size: 0.8rem;
   color: #999;
   font-weight: normal;
@@ -153,6 +157,8 @@
   width: 60%; /* exemplo */
 }
 
+
+/* botões do paciente */
 .botoes-paciente {
   display: flex;
   gap: 5px;
@@ -177,4 +183,3 @@
   background-color: var(--verde-escuro);
   transform: translateY(-1px);
 }
-
