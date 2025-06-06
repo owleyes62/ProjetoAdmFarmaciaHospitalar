@@ -80,8 +80,34 @@ function configurarConfig() {
 }
 
 function configurarRelatorio() {
-  // nenhum script externo, o código permanece como está
+  const form = document.getElementById('form-relatorio');
+  
+  if (!form) {
+    console.warn('Formulário de relatório não encontrado.');
+    return;
+  }
+
+  form.addEventListener('submit', function(e) {
+    e.preventDefault();
+
+    const dados = {
+      nome_funcionario: form.nome.value.trim(),
+      id_funcionario: form['id-funcionario'].value.trim(),
+      data: form.data.value,
+      num_pacientes_atendidos: parseInt(form['pacientes-atendidos'].value),
+      num_erros_medicamento: parseInt(form['erros-medicamento'].value),
+      num_erros_pessoais: form['erros-pessoais'].value.trim(),
+      observacoes: form['descricao-dia'].value.trim()
+    };
+
+    // Aqui você pode enviar os dados para Supabase futuramente
+    console.log('Dados do relatório:', dados);
+
+    alert('Relatório enviado com sucesso!');
+    form.reset();
+  });
 }
+
 
 function configurarMedicamento(queryString) {
   removerScriptExistente('js/bdConnect.js');
