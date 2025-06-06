@@ -1,19 +1,18 @@
+// Pega a URL do script atual e extrai o parâmetro pacienteId da query string
 const scriptUrl = import.meta.url || document.currentScript.src;
 const urlParams = new URLSearchParams(scriptUrl.split('?')[1]);
 const pacienteId = urlParams.get('pacienteId');
 
-
-
-
+// Se não houver pacienteId na URL, mostra erro no console, senão carrega dados do paciente
 if (!pacienteId) {
   console.error('ID do paciente não informado na URL.');
 } else {
   carregarCabecalhoPaciente(pacienteId);
   inserirBotoesPaciente(pacienteId); 
-  // carregarEntregasPaciente(pacienteId)
-  
+  // carregarEntregasPaciente(pacienteId) // (Comentado por enquanto)
 }
-// botões de navegação superior da tela entrega 
+
+// Insere os botões de navegação superiores na tela entrega com links para outras páginas do paciente
 function inserirBotoesPaciente(pacienteId) {
   const container = document.querySelector('.botoes-superiores');
   if (!container) return;
@@ -25,7 +24,7 @@ function inserirBotoesPaciente(pacienteId) {
   `;
 }
 
-// cabeçalho da tela entrega 
+// Busca os dados do paciente no Supabase e carrega o cabeçalho com essas informações
 async function carregarCabecalhoPaciente(id) {
   try {
     const { data, error } = await supabaseClient
@@ -48,50 +47,3 @@ async function carregarCabecalhoPaciente(id) {
     console.error('Erro ao carregar cabeçalho do paciente:', err.message);
   }
 }
-
-// async function carregarEntregasPaciente(id) {
-//   try {
-//     const { data, error } = await supabaseClient
-//       .from('entrega')
-//       .select('medicamento, frequencia, status')
-//       .eq('id_paciente', id);
-
-//     if (error) throw error;
-
-//     const listaEntrega = document.querySelector('.lista-entrega');
-//     listaEntrega.innerHTML = '';
-
-//     if (!data || data.length === 0) {
-//       listaEntrega.innerHTML = '<p>Nenhuma entrega encontrada para este paciente.</p>';
-//       return;
-//     }
-
-//     data.forEach(entrega => {
-//       const item = document.createElement('div');
-//       item.classList.add('entrega-item');
-//       item.textContent = `${entrega.medicamento} - ${entrega.frequencia} (${entrega.status})`;
-//       listaEntrega.appendChild(item);
-//     });
-
-//     const total = data.length;
-//     const prontos = data.filter(e => e.status.toLowerCase() === 'pronto').length;
-
-//     const infoMedicamentos = document.querySelector('.info-medicamentos');
-//     if (infoMedicamentos) {
-//       infoMedicamentos.innerHTML = `
-//         <p><strong>Total:</strong> ${total}</p>
-//         <p><strong>Prontos:</strong> ${prontos}</p>
-//       `;
-//     }
-
-//     const porcentagem = prontos && total ? Math.round((prontos / total) * 100) : 0;
-//     const porcentagemElem = document.querySelector('.porcentagem');
-//     if (porcentagemElem) {
-//       porcentagemElem.textContent = `${porcentagem}%`;
-//     }
-//   } catch (err) {
-//     console.error('Erro ao carregar entregas:', err.message);
-//   }
-// }
-
-

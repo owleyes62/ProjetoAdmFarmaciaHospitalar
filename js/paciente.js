@@ -1,5 +1,4 @@
-
-
+// Busca lista de pacientes no Supabase e exibe na página
 async function listarPacientes() {
   try {
     const { data, error } = await supabaseClient.from('paciente').select('id_paciente, nome');
@@ -20,6 +19,7 @@ async function listarPacientes() {
     let porcentagem = 100;
     let contador = 1;
 
+    // Itera pacientes para criar elementos HTML com info e botões
     data.forEach(paciente => {
       const pacienteDiv = document.createElement('div');
       pacienteDiv.classList.add('linha-paciente');
@@ -51,7 +51,7 @@ async function listarPacientes() {
 
       container.appendChild(pacienteDiv);
       contador++;
-      porcentagem -= 20;
+      porcentagem -= 20; // Simula barra de progresso decrescente
       container.appendChild(document.createElement('hr'));
     });
 
@@ -60,4 +60,4 @@ async function listarPacientes() {
   }
 }
 
-listarPacientes();
+listarPacientes(); 

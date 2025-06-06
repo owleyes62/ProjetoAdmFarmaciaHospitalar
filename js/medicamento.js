@@ -1,4 +1,4 @@
-// Extrai o pacienteId diretamente da URL do script atual
+// Extrai o pacienteId dos parâmetros da URL do script atual
 const scriptUrl = import.meta.url || document.currentScript.src;
 const urlParams = new URLSearchParams(scriptUrl.split('?')[1]);
 const pacienteId = urlParams.get('pacienteId');
@@ -6,13 +6,11 @@ const pacienteId = urlParams.get('pacienteId');
 if (!pacienteId) {
   console.error('ID do paciente não informado na URL.');
 } else {
-  carregarCabecalhoPaciente(pacienteId);
-  inserirBotoesPaciente(pacienteId);
-  
-  
+  carregarCabecalhoPaciente(pacienteId); // Preenche cabeçalho com dados do paciente
+  inserirBotoesPaciente(pacienteId);     // Insere botões de navegação da tela medicamento
 }
-// botões de navegação superior da tela medicamento
 
+// Insere botões superiores para navegação entre telas do paciente
 function inserirBotoesPaciente(pacienteId) {
   const container = document.querySelector('.botoes-superiores');
   if (!container) return;
@@ -24,7 +22,7 @@ function inserirBotoesPaciente(pacienteId) {
   `;
 }
 
-// cabeçalho da tela medicamento
+// Busca dados do paciente no Supabase e atualiza o cabeçalho da página
 async function carregarCabecalhoPaciente(id) {
   try {
     const { data, error } = await supabaseClient

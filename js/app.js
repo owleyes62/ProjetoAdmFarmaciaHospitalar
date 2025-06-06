@@ -1,3 +1,4 @@
+// Carrega uma página HTML no container #app, com animação e configurações específicas por página
 function carregarPagina(pagina) {
   const app = document.getElementById('app');
   const [paginaLimpa, queryString] = pagina.split('?');
@@ -14,7 +15,7 @@ function carregarPagina(pagina) {
         app.classList.remove('fade-out');
         app.classList.add('fade-in');
 
-        // Configurações de cada página
+        // Chama função de configuração específica da página carregada
         if (paginaLimpa === 'login.html') configurarLogin();
         if (paginaLimpa === 'pacientes.html') configurarPaciente();
         if (paginaLimpa === 'config.html') configurarConfig();
@@ -31,10 +32,12 @@ function carregarPagina(pagina) {
 
 window.carregarPagina = carregarPagina;
 
+// Inicializa carregando a página de login ao carregar o DOM
 window.addEventListener('DOMContentLoaded', () => {
   carregarPagina('login.html');
 });
 
+// Remove scripts já adicionados na página com base no nome do arquivo
 function removerScriptExistente(nomeScript) {
   document.querySelectorAll('script').forEach(script => {
     if (script.src && script.src.includes(nomeScript)) {
@@ -43,7 +46,7 @@ function removerScriptExistente(nomeScript) {
   });
 }
 
-
+// Configura scripts para a página de login
 function configurarLogin() {
   removerScriptExistente('js/bdConnect.js');
   removerScriptExistente('js/login.js');
@@ -60,6 +63,7 @@ function configurarLogin() {
   };
 }
 
+// Configura scripts para a página de pacientes
 function configurarPaciente() {
   removerScriptExistente('js/bdConnect.js');
   removerScriptExistente('js/paciente.js');
@@ -75,10 +79,12 @@ function configurarPaciente() {
   };
 }
 
+// Configuração da página de configurações (ainda sem script)
 function configurarConfig() {
   // sem script associado ainda
 }
 
+// Configura a lógica do formulário da página de relatório
 function configurarRelatorio() {
   const form = document.getElementById('form-relatorio');
   
@@ -100,7 +106,7 @@ function configurarRelatorio() {
       observacoes: form['descricao-dia'].value.trim()
     };
 
-    // Aqui você pode enviar os dados para Supabase futuramente
+    // Aqui poderá enviar dados ao backend futuramente
     console.log('Dados do relatório:', dados);
 
     alert('Relatório enviado com sucesso!');
@@ -108,7 +114,7 @@ function configurarRelatorio() {
   });
 }
 
-
+// Configura scripts para a página de medicamento, passando query string
 function configurarMedicamento(queryString) {
   removerScriptExistente('js/bdConnect.js');
   removerScriptExistente('js/medicamento.js');
@@ -125,6 +131,7 @@ function configurarMedicamento(queryString) {
   };
 }
 
+// Configura scripts para a página de entrega, passando query string
 function configurarEntrega(queryString) {
   removerScriptExistente('js/bdConnect.js');
   removerScriptExistente('js/entrega.js');
@@ -141,6 +148,7 @@ function configurarEntrega(queryString) {
   };
 }
 
+// Configura scripts para a página de prontuário, passando query string
 function configurarProntuario(queryString) {
   removerScriptExistente('js/bdConnect.js');
   removerScriptExistente('js/prontuario.js');
@@ -157,6 +165,7 @@ function configurarProntuario(queryString) {
   };
 }
 
+// Função para carregar uma página específica já vinculada a um paciente pelo ID na query string
 function carregarPaginaComPaciente(pagina, pacienteId) {
   window.history.pushState({}, '', `${pagina}?pacienteId=${pacienteId}`);
   carregarPagina(`${pagina}?pacienteId=${pacienteId}`);

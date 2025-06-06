@@ -1,4 +1,4 @@
-// Autenticação tradicional
+// Autenticação tradicional com nome e senha via formulário
 const form = document.getElementById('login-form');
 
 if (form) {
@@ -8,6 +8,7 @@ if (form) {
     const usuario = form.querySelector('input[type="text"]').value.trim();
     const senha = form.querySelector('input[type="password"]').value.trim();
 
+    // Consulta no Supabase para verificar usuário e senha na tabela enfermeira
     const { data, error } = await supabaseClient
       .from('enfermeira')
       .select('*')
@@ -16,25 +17,26 @@ if (form) {
       .single();
 
     if (error || !data) {
-      alert('Usuário ou senha inválidos');
+      alert('Usuário ou senha inválidos'); // Erro de autenticação
       return;
     }
 
-    carregarPagina('pacientes.html');
+    carregarPagina('pacientes.html'); // Redireciona para a página de pacientes ao logar
   });
 } else {
   console.error('Formulário de login não encontrado!');
 }
 
-// Autenticação com Google
+// Autenticação via Google OAuth com botão específico
 const btnGoogle = document.getElementById('login-google');
 
 if (btnGoogle) {
   btnGoogle.addEventListener('click', async () => {
+    // Inicia fluxo de login via Google com redirecionamento
     const { error } = await supabaseClient.auth.signInWithOAuth({
       provider: 'google',
       options: {
-        redirectTo: window.location.origin // ou sua URL de produção
+        redirectTo: window.location.origin // URL para redirecionar após login
       }
     });
 
