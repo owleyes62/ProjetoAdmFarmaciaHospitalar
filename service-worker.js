@@ -1,20 +1,21 @@
-const CACHE_NAME = 'adm-hospitalar-cache-v1';
+const CACHE_NAME = 'app-cache-v1';
 const urlsToCache = [
   '/',
   '/index.html',
   '/manifest.json',
   '/css/style.css',
-  // adicione outras rotas e arquivos importantes
+  '/js/app.js',
+  // adicione mais arquivos estáticos se necessário
 ];
 
-// Instala e armazena os arquivos em cache
 self.addEventListener('install', event => {
   event.waitUntil(
-    caches.open(CACHE_NAME).then(cache => {
-      return cache.addAll(urlsToCache);
-    })
+    caches.open(CACHE_NAME)
+      .then(cache => cache.addAll(urlsToCache))
   );
 });
+
+
 
 // Ativa e limpa caches antigos
 self.addEventListener('activate', event => {
@@ -31,11 +32,9 @@ self.addEventListener('activate', event => {
   );
 });
 
-// Intercepta as requisições e tenta servir do cache
 self.addEventListener('fetch', event => {
   event.respondWith(
-    caches.match(event.request).then(response => {
-      return response || fetch(event.request);
-    })
+    caches.match(event.request)
+      .then(response => response || fetch(event.request))
   );
 });
