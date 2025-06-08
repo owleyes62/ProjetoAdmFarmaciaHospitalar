@@ -1,6 +1,3 @@
-// O supabaseClient será criado pelo bdConnect.js
-// Vamos aguardar ele estar disponível antes de usar
-
 // Carrega uma página HTML no container #app, com animação e configurações específicas por página
 function carregarPagina(pagina) {
   const app = document.getElementById('app');

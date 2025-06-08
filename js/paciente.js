@@ -1,4 +1,4 @@
-// Busca lista de pacientes no Supabase e exibe na página
+// Busca pacientes no Supabase e exibe na página
 async function listarPacientes() {
   try {
     const { data, error } = await supabaseClient.from('paciente').select('id_paciente, nome');
