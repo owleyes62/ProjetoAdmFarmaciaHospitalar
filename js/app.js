@@ -1,3 +1,6 @@
+// O supabaseClient será criado pelo bdConnect.js
+// Vamos aguardar ele estar disponível antes de usar
+
 // Carrega uma página HTML no container #app, com animação e configurações específicas por página
 function carregarPagina(pagina) {
   const app = document.getElementById('app');
@@ -32,9 +35,44 @@ function carregarPagina(pagina) {
 
 window.carregarPagina = carregarPagina;
 
-// Inicializa carregando a página de login ao carregar o DOM
-window.addEventListener('DOMContentLoaded', () => {
-  carregarPagina('login.html');
+// Inicializa carregando a página adequada ao carregar o DOM
+window.addEventListener('DOMContentLoaded', async () => {
+  console.log('🚀 DOM carregado, verificando autenticação...');
+  
+  try {
+    // Aguarda o supabaseClient estar disponível
+    if (!window.supabaseClient) {
+      console.log('⏳ Aguardando supabaseClient...');
+      await new Promise(resolve => setTimeout(resolve, 200));
+    }
+    
+    if (!window.supabaseClient) {
+      console.error('❌ supabaseClient não disponível após timeout');
+      carregarPagina('login.html');
+      return;
+    }
+    
+    const { data: { session }, error } = await window.supabaseClient.auth.getSession();
+    
+    if (error) {
+      console.error('❌ Erro ao verificar sessão:', error);
+      carregarPagina('login.html');
+      return;
+    }
+    
+    console.log('🔍 Verificação de sessão inicial:', session ? '✅ LOGADO' : '❌ NÃO LOGADO');
+    
+    if (session) {
+      console.log('👤 Usuário logado:', session.user.email);
+      carregarPagina('pacientes.html');
+    } else {
+      console.log('📝 Carregando página de login');
+      carregarPagina('login.html');
+    }
+  } catch (error) {
+    console.error('❌ Erro ao verificar sessão:', error);
+    carregarPagina('login.html');
+  }
 });
 
 // Remove scripts já adicionados na página com base no nome do arquivo

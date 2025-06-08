@@ -8,11 +8,12 @@ if (!window.supabaseClient) {
     try {
       const { data, error } = await window.supabaseClient.from('paciente').select('*').limit(1);
       if (error) throw error;
-      alert('Conectado! Dados Recebidos');
+      console.log('Conectado ao Supabase!'); // Mudei para console.log em vez de alert
     } catch (err) {
-      alert('Erro ao conectar: ' + err.message);
+      console.error('Erro ao conectar:', err.message);
     }
   }
 
-  testarConexao();
+  // Remova ou comente esta linha para não mostrar alert automático
+  // testarConexao();
 }
