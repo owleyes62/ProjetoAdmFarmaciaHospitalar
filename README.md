@@ -24,4 +24,4 @@ Este é o front-end de um sistema hospitalar focado na gestão de pacientes, med
 - O `app.js` gerencia as mudanças de tela e invoca funções específicas com base na página carregada.
 - O `bdConnect.js` conecta a aplicação ao Supabase com a `anonKey` e `url` da instância.
 - algumas telas possui seu próprio arquivo `.js` para isolar a lógica de cada funcionalidade.
-- O `formulário de relatório` envia dados para a tabela `relatorio` no Supabase.
+
