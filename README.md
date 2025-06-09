@@ -5,23 +5,24 @@ Este projeto é a interface web de um Sistema de Administração Hospitalar, des
 ## 🚀 Funcionalidades Principais
 
 - 📋 Listagem de Pacientes para atendimento
-- 💊 Gestão de Medicamentos por enfermeira
+- 💊 Gestão de Medicamentos para enfermeira
 - 📝 Emissão de Relatórios diario
 - 📁 Visualização de Prontuários
 - 🔒 Tela de Login
 - ⚙️ Tela de Configurações
-- 📊 Navegação com sistema SPA (Single Page Application)
+- 📊 Navegação com sistema SPA (Troca dinâmica de páginas sem recarregamento completo.)
+
 
 ## 🛠️ Tecnologias Utilizadas
 
 - **HTML5 & CSS3**
 - **JavaScript Puro (ES6+)**
-- **[Supabase](https://supabase.com/)** (como backend e banco de dados)
+- **[Supabase](https://supabase.com/)** (para armazenar o banco de dados)
 
 ## 🧠 Como Funciona
 
 - **Navegação SPA:**  
-  A página `index.html` é a base da aplicação. Ela utiliza JavaScript para carregar outras páginas dinamicamente via `fetch`, criando a experiência de uma aplicação SPA.
+  A página `index.html` é a base da aplicação. Ela utiliza JavaScript para carregar outras páginas dinamicamente via `fetch`(Carrega o conteúdo de outras páginas HTML), criando a experiência de uma aplicação SPA.
   **[index.html](https://github.com/owleyes62/ProjetoAdmFarmaciaHospitalar/blob/main/index.html)**
   
 - **Gerenciador de Páginas:**  
@@ -33,7 +34,7 @@ Este projeto é a interface web de um Sistema de Administração Hospitalar, des
   **[bdConnect.js](https://github.com/owleyes62/ProjetoAdmFarmaciaHospitalar/blob/main/js/bdConnect.js)**
 
 - **Modularização por Página:**  
-  Cada funcionalidade (como login, pacientes, medicamentos) tem seu próprio arquivo `.js` que encapsula sua lógica.
+  Cada tela (como login, pacientes, medicamentos) tem seu próprio arquivo `.js` que encapsula sua lógica.
   **[arquivos js](https://github.com/owleyes62/ProjetoAdmFarmaciaHospitalar/tree/main/js)**
 
 
