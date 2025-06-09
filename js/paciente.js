@@ -18,6 +18,7 @@ async function listarPacientes() {
 
     let porcentagem = 100;
     let contador = 1;
+    let hora = 20;
 
     // Itera pacientes para criar elementos HTML com info e botões
     data.forEach(paciente => {
@@ -33,7 +34,7 @@ async function listarPacientes() {
             <i class="fa fa-bell sino-alerta"></i>
           </div>
           <span class="detalhe-paciente">
-            <span class="prioridade">Prioridade Alerta</span> - 09:45
+            <span class="prioridade">Prioridade Alerta</span> - 09:${hora}
           </span>
           <div class="barra-container">
             <span class="entrega-label">Entrega</span>
@@ -51,7 +52,8 @@ async function listarPacientes() {
 
       container.appendChild(pacienteDiv);
       contador++;
-      porcentagem -= 20; // Simula barra de progresso decrescente
+      porcentagem -= 20;
+      hora += 20;
       container.appendChild(document.createElement('hr'));
     });
 
