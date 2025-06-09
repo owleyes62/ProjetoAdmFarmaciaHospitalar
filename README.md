@@ -30,7 +30,7 @@ Este projeto é a interface web de um Sistema de Administração Hospitalar, des
   
 - **Conexão com o Banco:**  
   O `bdConnect.js` armazena as credenciais de acesso ao Supabase, incluindo a `anonKey` e a `url` da instância.
-  **[app.js](https://github.com/owleyes62/ProjetoAdmFarmaciaHospitalar/blob/main/js/bdConnect.js)**
+  **[bdConnect.js](https://github.com/owleyes62/ProjetoAdmFarmaciaHospitalar/blob/main/js/bdConnect.js)**
 
 - **Modularização por Página:**  
   Cada funcionalidade (como login, pacientes, medicamentos) tem seu próprio arquivo `.js` que encapsula sua lógica.
