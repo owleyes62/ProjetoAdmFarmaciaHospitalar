@@ -1,0 +1,8 @@
+[{
+      "relation": ["delegate_permission/common.handle_all_urls"],
+      "target": {
+        "namespace": "android_app",
+        "package_name": "app.vercel.projeto_adm_farmacia_hospitalar.twa",
+        "sha256_cert_fingerprints": ["20:93:D5:73:8E:07:6B:7E:77:C7:A6:78:DB:F3:50:C6:E3:F5:86:5B:FD:9B:93:A8:67:82:E5:79:0A:A1:E7:A1"]
+      }
+    }]
