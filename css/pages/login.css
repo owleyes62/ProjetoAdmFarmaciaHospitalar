@@ -71,3 +71,9 @@
   height: 24px;
   display: block;
 }
+
+/* botão de instalar app */
+#install-button:hover {
+    transform: scale(1.05);
+    transition: all 0.3s ease;
+}

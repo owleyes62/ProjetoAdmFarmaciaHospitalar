@@ -50,6 +50,7 @@
     <script src="js/bdConnect.js"></script>
     <!-- Seu script principal -->
     <script type="module" src="js/app.js"></script>
+      <!-- PWA - Registro do Service Worker -->
     <script>
         // Registrar Service Worker para PWA
         if ('serviceWorker' in navigator) {
@@ -73,27 +74,53 @@
             // Guarda o evento para usar depois
             deferredPrompt = e;
             
-            // Opcional: Mostrar um botão customizado para instalar
-            console.log('PWA pode ser instalado!');
+            // Mostra o botão de instalação no meio da página
+            const installContainer = document.getElementById('install-container');
+            const installButton = document.getElementById('install-button');
             
-            // Exemplo de como criar um botão de instalação personalizado:
-            const installButton = document.createElement('button');
-            installButton.textContent = 'Instalar App';
-            installButton.addEventListener('click', () => {
-                deferredPrompt.prompt();
-                deferredPrompt.userChoice.then((choiceResult) => {
-                    if (choiceResult.outcome === 'accepted') {
-                        console.log('Usuário instalou o PWA');
-                    }
-                    deferredPrompt = null;
+            if (installContainer && installButton) {
+                installContainer.style.display = 'block';
+                
+                // Adiciona evento de clique no botão
+                installButton.addEventListener('click', () => {
+                    // Mostra o prompt de instalação
+                    deferredPrompt.prompt();
+                    
+                    // Aguarda a escolha do usuário
+                    deferredPrompt.userChoice.then((choiceResult) => {
+                        if (choiceResult.outcome === 'accepted') {
+                            console.log('Usuário instalou o PWA');
+                            // Esconde o botão após instalação
+                            installContainer.style.display = 'none';
+                        } else {
+                            console.log('Usuário cancelou a instalação');
+                        }
+                        deferredPrompt = null;
+                    });
                 });
-            });
-            document.body.appendChild(installButton);
+                
+                // Adiciona efeito hover
+                installButton.addEventListener('mouseenter', () => {
+                    installButton.style.background = '#0056b3';
+                });
+                
+                installButton.addEventListener('mouseleave', () => {
+                    installButton.style.background = '#007bff';
+                });
+            }
+            
+            console.log('PWA pode ser instalado!');
         });
         
         // PWA - Detectar quando o app foi instalado
         window.addEventListener('appinstalled', (evt) => {
             console.log('PWA foi instalado com sucesso!');
+            
+            // Esconde o botão de instalação após instalação bem-sucedida
+            const installContainer = document.getElementById('install-container');
+            if (installContainer) {
+                installContainer.style.display = 'none';
+            }
         });
     </script>
 </body>
