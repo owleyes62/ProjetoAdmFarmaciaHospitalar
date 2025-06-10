@@ -39,6 +39,56 @@
     <meta name="keywords" content="farmácia, hospital, administração, medicamentos">
 </head>
 <body>
+<!-- reCAPTCHA Modal - Aparece assim que o site carrega -->
+    <div id="recaptcha-modal" style="
+        position: fixed;
+        top: 0;
+        left: 0;
+        width: 100%;
+        height: 100%;
+        background: rgba(0, 0, 0, 0.8);
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        z-index: 9999;
+    ">
+        <div style="
+            background: white;
+            padding: 30px;
+            border-radius: 10px;
+            text-align: center;
+            box-shadow: 0 4px 20px rgba(0,0,0,0.3);
+            max-width: 400px;
+            width: 90%;
+        ">
+            <h2 style="margin-bottom: 20px; color: #333;">🔒 Verificação de Segurança</h2>
+            <p style="margin-bottom: 20px; color: #666;">
+                Por favor, confirme que você não é um robô para acessar o sistema:
+            </p>
+            
+            <!-- Widget do reCAPTCHA -->
+            <div id="recaptcha-widget" style="display: flex; justify-content: center; margin: 20px 0;"></div>
+            
+            <button id="verify-button" style="
+                background: #4CAF50;
+                color: white;
+                border: none;
+                padding: 12px 24px;
+                border-radius: 5px;
+                cursor: pointer;
+                font-size: 16px;
+                opacity: 0.5;
+                transition: all 0.3s ease;
+            " disabled>
+                ✅ Verificar e Entrar
+            </button>
+            
+            <p style="font-size: 12px; color: #999; margin-top: 15px;">
+                Sistema protegido por reCAPTCHA do Google
+            </p>
+        </div>
+    </div>
+
     <!-- Corrigido: removido div duplicado -->
     <div id="app" class="fade-in">
         <!-- O conteúdo da página será carregado aqui -->
@@ -50,6 +100,89 @@
     <script src="js/bdConnect.js"></script>
     <!-- Seu script principal -->
     <script type="module" src="js/app.js"></script>
+
+     <!-- reCAPTCHA - Configuração e Controle -->
+    <script>
+        // SUBSTITUA 'SEU_SITE_KEY_AQUI' pela sua chave do Google reCAPTCHA
+        const RECAPTCHA_SITE_KEY = '6Lfmz1srAAAAAK1hJXxtYFa_buyJO8edaAAgyr82';
+        
+        let recaptchaWidget;
+        let isRecaptchaVerified = false;
+        
+        // Função chamada quando o reCAPTCHA carrega
+        function onRecaptchaLoad() {
+            recaptchaWidget = grecaptcha.render('recaptcha-widget', {
+                'sitekey': RECAPTCHA_SITE_KEY,
+                'callback': onRecaptchaSuccess,
+                'expired-callback': onRecaptchaExpired,
+                'error-callback': onRecaptchaError
+            });
+        }
+        
+        // Função chamada quando reCAPTCHA é resolvido com sucesso
+        function onRecaptchaSuccess(token) {
+            isRecaptchaVerified = true;
+            const verifyButton = document.getElementById('verify-button');
+            verifyButton.disabled = false;
+            verifyButton.style.opacity = '1';
+            verifyButton.style.cursor = 'pointer';
+            console.log('reCAPTCHA verificado com sucesso!');
+        }
+        
+        // Função chamada quando reCAPTCHA expira
+        function onRecaptchaExpired() {
+            isRecaptchaVerified = false;
+            const verifyButton = document.getElementById('verify-button');
+            verifyButton.disabled = true;
+            verifyButton.style.opacity = '0.5';
+            console.log('reCAPTCHA expirado. Tente novamente.');
+        }
+        
+        // Função chamada quando há erro no reCAPTCHA
+        function onRecaptchaError() {
+            console.log('Erro no reCAPTCHA. Tente recarregar a página.');
+            alert('Erro na verificação. Por favor, recarregue a página.');
+        }
+        
+        // Função para verificar e liberar acesso
+        function verifyAndEnter() {
+            if (isRecaptchaVerified) {
+                // Esconde o modal do reCAPTCHA
+                document.getElementById('recaptcha-modal').style.display = 'none';
+                // Mostra o conteúdo principal
+                document.getElementById('main-content').style.display = 'block';
+                
+                console.log('Usuário verificado! Acesso liberado.');
+                
+                // Opcional: Enviar token para o servidor para validação
+                const recaptchaToken = grecaptcha.getResponse(recaptchaWidget);
+                console.log('Token reCAPTCHA:', recaptchaToken);
+                
+                // Aqui você pode fazer uma requisição para seu servidor
+                // para verificar o token no backend se necessário
+                
+            } else {
+                alert('Por favor, complete a verificação reCAPTCHA primeiro.');
+            }
+        }
+        
+        // Aguardar carregamento da página
+        window.addEventListener('load', () => {
+            // Configurar botão de verificação
+            const verifyButton = document.getElementById('verify-button');
+            verifyButton.addEventListener('click', verifyAndEnter);
+            
+            // Carregar reCAPTCHA após 1 segundo (para melhor UX)
+            setTimeout(() => {
+                if (typeof grecaptcha !== 'undefined') {
+                    onRecaptchaLoad();
+                } else {
+                    console.error('reCAPTCHA não carregou. Verifique sua conexão.');
+                }
+            }, 1000);
+        });
+    </script>
+
       <!-- PWA - Registro do Service Worker -->
     <script>
         // Registrar Service Worker para PWA
